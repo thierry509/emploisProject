@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Emplois</title>
+    <link href="/asset/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container-fuide position-relative" style="height: 70px; z-index: 6;">
+        <nav
+            class="navbar col-12 navbar-expand-md navbar-light border-solid justify-content-space-bettewen align-items-center border-bottom px-3 position-fixed bg-light">
+            <a href="/" class="nav-link fs-3 fw-light text-primary">Emplois</a>
+            <div class="collapse navbar-collapse" id="navbarcollapse">
+                <ul class="nav col-12 justify-content-center fs-6 text-dark">
+                    <li class="nav-item"><a class="nav-link" href="#">Acceuil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Post d'Emplois</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">A propos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Feedbacks</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 text-end">
+                <button type="button" class="btn btn-outline-primary">Inscrire</button>
+                <button type="button" class="btn btn-primary">Connecter</button>
+            </div>
+            <button type="button" class="navbar-toggler" data-bas-toogle="collapse" data-bs-target="#navbarCollapse"
+                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toogle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </nav>
+    </div>
+    <div class="row d-flex justify-content-center">
+        <h1 class="h3 text-center fw-semibold text-primary my-4">Modifier profile</h1>
+        <form action="" class="col-11">
+            <div class="row">
+                <div class="profil border col-md-4">
+                    <input type="image" src="/asset/img/téléchargement.png" class="border border-circle" alt="" name="profile">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6 form-floating mb-4">
+                    <input type="text" class="form-control" placeholder="nom" id="nom">
+                    <label for="">Nom</label>
+                </div>
+                <div class="col-6 form-floating mb-4">
+                    <input type="text" class="form-control" placeholder="nom" id="nom">
+                    <label for="">Prenom</label>
+                </div>
+                <div class="col-6 form-floating mb-4">
+                    <select name="sexe" id="sexe" class="form-select" aria-placeholder="2">
+                        <option value="m">Masculin</option>
+                        <option value="f">Feminin</option>
+                    </select>
+                    <label for="">Sexe</label>
+                </div>
+                <div class="col-6 form-group mb-4">
+                    <label for="">Date de naissance</label>
+                    <input type="date" class="form-control" name="date" id="date" placeholder="2">
+                </div>
+                <div class="col-6 form-floating mb-4">
+                    <input type="tel" class="form-control" placeholder="nom" id="nom">
+                    <label for="">Telephone</label>
+                </div>
+                <div class="col-6 form-floating mb-4">
+                    <input type="text" class="form-control" placeholder="nom" id="nom">
+                    <label for="">ville</label>
+                </div>
+                <div class="col-6 form-floating mb-4">
+                    <input type="text" class="form-control" placeholder="nom" id="nom">
+                    <label for="">Pays</label>
+                </div>
+                <div class="col-6 form-floating mb-4">
+                    <textarea name="competance" class="form-control" id="" cols="30" rows="10"></textarea>
+                    <label for="">Competance</label>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-center">
+                <button type="submit" class="btn btn-primary col-md-4">Enregistrer</button>
+            </div>
+        </form>
+    </div>
+</body>

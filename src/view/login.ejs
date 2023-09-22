@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Emplois | Login</title>
+    <link href="/asset/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/asset/fontAwesome/css/fontawesome.min.css">
+    <link rel="stylesheet" href="/asset/fontAwesome/css/brands.min.css">
+    <link rel="stylesheet" href="/asset/fontAwesome/css/solid.min.css">
+    <link rel="stylesheet" href="asset/fontAwesome/css/regular.min.css">
+    <link rel="stylesheet" href="/css/login.css">
+</head>
+
+<body class="text-center">
+    <main class="form-signin col-md-4 col-11">
+      <h1 class="h3 text-center fw-bold text-primary">-Emplois-</h1>
+        <form method="post" action="auth/login">
+          <h1 class="h4 my-3 fw-normal">Connection</h1>
+      
+          <div class="form-floating mb-4">
+            <input type="email" class="form-control" name="email" id="email" placeholder="name@example.com">
+            <label for="floatingInput">Email</label>
+          </div>
+          <div class="form-floating mb-4">
+            <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+            <label for="floatingPassword">Password</label>
+          </div>
+      
+          <div class="checkbox mb-3">
+            <label>
+              <input type="checkbox" value="remember-me"> Remember me
+            </label>
+          </div>
+          <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+          <div class="row mt-3">
+            <a href="sign-in" class="text-secondary">Vous n' avex pas de compte? Inscrire</a>
+          </div>
+          <p class="mt-5 mb-3 text-muted">&copy;2023</p>
+        </form>
+      </main>
+</body>
+
+</html>

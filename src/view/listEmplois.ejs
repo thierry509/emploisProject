@@ -1,0 +1,79 @@
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Emplois</title>
+    <link rel="stylesheet" href="/asset/fontAwesome/css/fontawesome.min.css">
+    <link rel="stylesheet" href="/asset/fontAwesome/css/brands.min.css">
+    <link rel="stylesheet" href="/asset/fontAwesome/css/solid.min.css">
+    <link rel="stylesheet" href="asset/fontAwesome/css/regular.min.css">
+    <link href="/asset/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container-fuide position-relative" style="height: 70px; z-index: 6;">
+        <nav
+            class="navbar col-12 navbar-expand-md navbar-light border-solid justify-content-space-bettewen align-items-center border-bottom px-3 position-fixed bg-light">
+            <a href="/" class="nav-link fs-3 fw-light text-primary">Emplois</a>
+            <div class="collapse navbar-collapse" id="navbarcollapse">
+                <ul class="nav col-12 justify-content-center text-dark">
+                    <li class="nav-item"><a class="nav-link" href="#">Acceuil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Post d'Emplois</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">A propos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Feedbacks</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 text-end">
+                <button type="button" class="btn btn-outline-primary">Inscrire</button>
+                <button type="button" class="btn btn-primary">Connecter</button>
+            </div>
+            <button type="button" class="navbar-toggler" data-bas-toogle="collapse" data-bs-target="#navbarCollapse"
+                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toogle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </nav>
+    </div>
+
+    <div class="container-fluide bg-light p-3">
+        <div class="form-group col-8">
+            <input type="search" name="search" class="form-control vol" id="search" placeholder="Rechercher">
+            <div class="btn btn-primary"><i class="fa fa-search"></i></div>
+        </div>
+        <div class="h2 text-center fw-bold border-bottom border-2 pb-1 mb-2" style="min-width: max-content;">Les offre
+            d'emplois recente</div>
+        <div class="album">
+            <div class="container">
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-3" id="list-emplois">
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <template id="item-emplois">
+        <div class="col mb-4">
+            <div class="border border-2 border-primary rounded-4 p-1">
+                <div class="d-flex">
+                    <div class="p-2 d-flex flex-column">
+                        <img src="./asset/img/téléchargement.png" class="img-thumbnail" alt="">
+                        <span class="fs-6 text-primary">Konbytech</span>
+                    </div>
+                    <div class="border-start p-2">
+                        <div class="h4 fw-semibold"> <a href="/emploisDetails.html"
+                                class="link-underline-dark">Developper solidity</a></div>
+                        <p class="p">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates incidunt
+                            officia quae
+                            deleniti optio vero consequatur.</p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+    <script src="/js/index.js"></script>
+    <script src="/asset/bootstrap/js/bootstrap.bundle.js"></script>
+    <script src="/asset/bootstrap/js/bootstrap.min.js"></script>
+</body>

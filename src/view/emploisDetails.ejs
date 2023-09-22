@@ -1,0 +1,106 @@
+<%- include('header.ejs') %>
+  <div class="d-flex justify-content-center">
+    <div class="container row">
+      <div class="col-lg-8 col-12">
+        <div class="row">
+          <div class="col-8">
+            <div class="h2 text-justify"><%= details.titre %></div>
+          </div>
+          <div class="col-4">
+            <div class="btn btn-primary m-3">Apliquer maintenant <i class="bi bi-heart"></i></div>
+          </div>
+        </div>
+        <div class="row text-secondary py-3">
+          <div class="col-6">
+            <i class="fa-regular fa-building my-1"></i> <%=  %>
+          </div>
+          <div class="col-6"> <i class="fa-solid fa-location-dot m-2"></i><%= details.ville%>, <%= details.pays %></div>
+        </div>
+        <div class="row">
+          <div class="h5 fw-bold">Description de l'emploi</div>
+        </div>
+        <div class="fs-9">
+          <div class="row text-secondary" id="overview">
+            <div class="h6 fw-bold">Apercu</div>
+            <p>
+             <%= details.introduction %>
+            </p>
+          </div>
+
+          <div class="row text-secondary" id="fonction">
+            <div class="h6 fw-bold">Responsabilite</div>
+            <p>
+              <%= details.fonction %>
+          </div>
+
+          <div class="row text-secondary" id="qualification">
+            <div class="h6 fw-bold">Qualification</div>
+            <p>
+              <%= details.qualification %>
+            </p>
+          </div>
+          <div class="d-flex justify-content-end p-2">
+            <div class="btn btn-primary p-2 fw-bold">Apliquer maintenant <i class="bi bi-heart"></i></div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-md-4 border-start border d-none d-lg-block">
+        <div class="h5 text-center text-secondary fw-bold">Emplois relative</div>
+        <div class="row">
+          <div class="col mb-4">
+            <div class="border border-2 border-primary rounded-4 p-1">
+              <div class="d-flex">
+                <div class="p-2 d-flex flex-column">
+                  <img src="./asset/img/téléchargement.png" class="img-thumbnail" alt="">
+                  <span class="fs-6 text-primary">Konbytech</span>
+                </div>
+                <div class="border-start p-2">
+                  <div class="h4 fw-semibold">Developper solidity</div>
+                  <p class="p">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates incidunt officia quae
+                    deleniti optio vero consequatur.</p>
+    
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col mb-4">
+            <div class="border border-2 border-primary rounded-4 p-1">
+              <div class="d-flex">
+                <div class="p-2 d-flex flex-column">
+                  <img src="./asset/img/téléchargement.png" class="img-thumbnail" alt="">
+                  <span class="fs-6 text-primary">Konbytech</span>
+                </div>
+                <div class="border-start p-2">
+                  <div class="h4 fw-semibold">Developper solidity</div>
+                  <p class="p">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates incidunt officia quae
+                    deleniti optio vero consequatur.</p>
+    
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col mb-4 border bg-dark d-none">
+            <div class="border border-2 border-primar
+            y rounded-4 p-1">
+              <div class="d-flex">
+                <div class="p-2 d-flex flex-column">
+                  <img src="./asset/img/téléchargement.png" class="img-thumbnail" alt="">
+                  <span class="fs-6 text-primary">Konbytech</span>
+                </div>
+                <div class="border-start p-2">
+                  <div class="h4 fw-semibold">Developper solidity</div>
+                  <p class="p">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates incidunt officia quae
+                    deleniti optio vero consequatur.</p>
+    
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <%- include('footer.ejs') %>

@@ -1,0 +1,43 @@
+<%- include('header.ejs') %>
+  <div class="container-fuide  bg-dark position-relative" style="height: 88vh;">
+    <div class="container  d-flex flex-column justify-content-around align-items-center h-100 col-8">
+      <p class=" text-light fs-1 text-center p-6 fw-semibold justify">
+        Emplois pour tout veuiller vous identifier pour commencer votre voyage dans le milieu proffesionnel avec nous
+      </p>
+      <button type="button" class="btn btn-light px-5 py-3 fw-bold fs-3">Commencer</button>
+    </div>
+  </div>
+
+  <div class="container-fluide bg-light p-3">
+    <div class="h2 text-center fw-bold border-bottom border-2 pb-1 mb-2" style="min-width: max-content;">Les offre
+      d'emplois recente</div>
+    <div class="album">
+      <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-3" id="list-emplois">
+          <% emplois.forEach(emploi => {%>         
+          <div class="col mb-4">
+            <div class="border border-2 border-primary rounded-4 p-1">
+              <div class="d-flex">
+                <div class="p-2 d-flex flex-column">
+                  <img src="./asset/img/test.png" class="img-thumbnail" alt="">
+                  <span class="fs-6 text-primary">Konbytech</span>
+                </div>
+                <div class="border-start p-2">
+                  <div class="h4 fw-semibold"> <a href="/emplois/<%= emploi.id%>" class="link"><%= emploi.titre  %></a></div>
+                  <p class="p"><%= emploi.introduction %></p>
+      
+                </div>
+              </div>
+            </div>
+          </div>
+          <% }); %>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+  <template id="item-emplois">
+    
+  </template>
+ <%- include('footer.ejs') %>
