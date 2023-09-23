@@ -11,16 +11,15 @@ class Authentification extends Controllers{
                 if(user.password == password){
                     new TableCandidat().candidat(user.id)
                     .then(candidat=>{
-                        console.log("Vndidat",candidat);
-                        if(candidat.id){
+                        if(candidat.length == 1){
                             resolve(candidat);
                         }
                         else{
+                            reject()
                         }
                     });
                     new TableEmployeur().employeur(user.id)
                     .then(employeur=>{
-                        console.log("Employeur", employeur);
                         if(employeur.id){
                             resolve(employeur)
                         }

@@ -8,7 +8,6 @@ class EmploisControlers extends Controllers{
     allEmplois = (request, response) => {
         new TableEmplois().allEmplois()
         .then(emplois => {
-            console.log(emplois);
             response.send(
                 this.return_json(emplois)
             )

@@ -10,8 +10,7 @@ class AuthControllers extends Controllers {
             password = request.body.password;
         new Authentification().authUser(email, password)
             .then(user => {
-                console.log("user login", user)
-                request.session.auth = user;
+                request.session.auth = user[0];
                 response.locals.user = request.session.auth;
                 response.redirect('/');
             })
@@ -29,7 +28,6 @@ class AuthControllers extends Controllers {
             regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
             // const password = bcrypt.genSalt(10).then(salt => bcrypt.hash(pass, salt));
-            console.log(password);
         if (regexEmail.test(email) && email == emailConfirm && password == passwordConfirm) {
             let id = Utils.generate();
             new TableUser().registerUser(id, email, password)

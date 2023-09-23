@@ -1,0 +1,222 @@
+<%- include('header.ejs') %>
+
+  <div class="container">
+    <div class="head-p text-start py-1 fw-bold border-bottom text-primary row d-flex align-items-center">
+      <h1 class="h5 col-11">Infomation personnel</h1>
+      <div class="image col-1 h-50">
+        <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image" width="40px">
+      </div>
+    </div>
+    <div class="col-12">
+      <div class="table row">
+        <div class="col-6 row mb-3 d-flex align-items-center">
+          <div class="col-6 fw-bold d-flex flex-row justify-content-between align-items-center">Nom
+            <span>:</span>
+          </div>
+          <div class="col-6 text-secondary">
+            <%= details.nom %>
+          </div>
+        </div>
+        <div class="col-6 row mb-3 d-flex align-items-center">
+          <div class="col-6 fw-bold d-flex flex-row justify-content-between align-items-center">Prenom
+            <span>:</span>
+          </div>
+          <div class="col-6 text-secondary">
+            <%= details.prenom %>
+          </div>
+        </div>
+        <div class="col-6 row mb-3 d-flex align-items-center">
+          <div class="col-6 fw-bold d-flex flex-row justify-content-between align-items-center">Sexe
+            <span>:</span>
+          </div>
+          <div class="col-6 text-secondary">
+            <%= details.sexe? details.sexe : 'non dispodible' %>
+          </div>
+        </div>
+        <div class="col-6 row mb-3 d-flex align-items-center">
+          <div class="col-6 fw-bold d-flex flex-row justify-content-between align-items-center">Date de
+            naissance <span>:</span></div>
+          <div class="col-6 text-secondary">
+            <%= details.dateDeNaiss? details.dateDeNaiss : 'non dispodible' %>
+          </div>
+        </div>
+        <div class="col-6 mb-2 row d-flex align-items-center">
+          <div class="col-6 fw-bold d-flex flex-row justify-content-between align-items-center">Telephone
+            <span>:</span>
+          </div>
+          <div class="col-6 text-secondary">
+            <%= details.telephone? details.telephone : 'non dispodible' %>
+          </div>
+        </div>
+        <div class="col-6 mb-3 row d-flex align-items-center">
+          <div class="col-6 fw-bold d-flex flex-row justify-content-between align-items-center">Pays <span>:</span>
+          </div>
+          <div class="col-6 text-secondary">
+            <%= details.pays? details.Pays : 'non dispodible' %>
+          </div>
+        </div>
+        <div class="col-6 mb-2 row d-flex align-items-center">
+          <div class="col-6 fw-bold d-flex flex-row justify-content-between align-items-center">Ville <span>:</span>
+          </div>
+          <div class="col-6 text-secondary">
+            <%= (details.ville? details.ville : 'non dispodible' ) %>
+          </div>
+        </div>
+      </div>
+      <% if(user && details.id==user.id){%>
+
+        <div class="col-12 d-flex justify-content-end">
+          <a href="/editProfile/<%=user.id%>" class=" btn btn-primary">
+            <i class="fas fa-edit"></i> Editer
+          </a>
+        </div>
+        <% } %>
+          <h1 class="h5 text-start pt-3 fw-bold border-bottom pb-1 text-primary">Etudes</h1>
+          <% if(etudes.length> 0) {%>
+            <% etudes.forEach(etude=> { %>
+              <div class="table row">
+                <div class="row col-6 mb-3 d-flex align-items-center">
+                  <div class="col-6 fw-bold d-flex flex-row justify-content-between align-items-center">Niveau
+                    <span>:</span>
+                  </div>
+                  <div class="col-6">
+                    <%= etude.niveau %>
+                  </div>
+                </div>
+
+                <div class="row col-6 mb-3 d-flex align-items-center">
+                  <div class="col-6 fw-bold d-flex flex-row justify-content-between align-items-center">Domaine
+                    <span>:</span>
+                  </div>
+                  <div class="col-6">
+                    <%= etude.domaine %>
+                  </div>
+                </div>
+
+                <div class="row col-6 mb-3 d-flex align-items-center">
+                  <div class="col-6 fw-bold d-flex flex-row justify-content-between align-items-center">Pays
+                    <span>:</span>
+                  </div>
+                  <div class="col-6">
+                    <%= etude.pays %>
+                  </div>
+                </div>
+
+                <div class="row col-6 mb-3 d-flex align-items-center">
+                  <div class="col-6 fw-bold d-flex flex-row justify-content-between align-items-center">
+                    Region<span>:</span></div>
+                  <div class="col-6">
+                    <%= etude.region %>
+                  </div>
+                </div>
+                <div class="row col-6 mb-4 d-flex align-items-center">
+                  <div class="col-6 fw-bold d-flex flex-row justify-content-between align-items-center">Anne debut
+                    <span>:</span>
+                  </div>
+                  <div class="col-6">
+                    <%=etude.dateDebut %>
+                  </div>
+                </div>
+
+                <div class="row col-6 mb-4 d-flex align-items-center">
+                  <div class="col-6 fw-bold d-flex flex-row justify-content-between align-items-center">Anne Fin
+                    <span>:</span>
+                  </div>
+                  <div class="col-6">
+                    <%= etude.dateFin%>
+                  </div>
+                </div>
+              </div>
+              <% if(user && details.id==user.id){%>
+
+                <div class="col-12 d-flex justify-content-end">
+                  <a href="/editProfile/<%=user.id%>#Emplois" class=" btn btn-primary">
+                    <i class="fas fa-edit"></i> Editer
+                  </a>
+                </div>
+                <% } %>
+              <% })}else{ %>
+                <div class="row">
+                  <div class="text-secondary">Information non-disponible</div>
+                </div>
+                <% } %>
+                <h1 class="h5 text-start pt-3 fw-bold border-bottom pb-1 text-primary">Experience</h1>
+                <% if(experiences.length> 0) {%>
+                  <% experiences.forEach(experience=> { %>
+                    <div class="table row">
+                      <div class="row col-6 mb-3 d-flex align-items-center">
+                        <div class="col-6 fw-bold d-flex flex-row justify-content-between align-items-center">Domaine
+                          <span>:</span>
+                        </div>
+                        <div class="col-6">
+                          <%= experience.domaine %>
+                        </div>
+                      </div>
+      
+                      <div class="row col-6 mb-3 d-flex align-items-center">
+                        <div class="col-6 fw-bold d-flex flex-row justify-content-between align-items-center">Entreprise
+                          <span>:</span>
+                        </div>
+                        <div class="col-6">
+                          <%= experience.entreprise %>
+                        </div>
+                      </div>
+      
+                      <div class="row col-6 mb-3 d-flex align-items-center">
+                        <div class="col-6 fw-bold d-flex flex-row justify-content-between align-items-center">Pays
+                          <span>:</span>
+                        </div>
+                        <div class="col-6">
+                          <%= experience.pays %>
+                        </div>
+                      </div>
+      
+                      <div class="row col-6 mb-3 d-flex align-items-center">
+                        <div class="col-6 fw-bold d-flex flex-row justify-content-between align-items-center">
+                          Region<span>:</span></div>
+                        <div class="col-6">
+                          <%= experience.region %>
+                        </div>
+                      </div>
+                      <div class="row col-6 mb-4 d-flex align-items-center">
+                        <div class="col-6 fw-bold d-flex flex-row justify-content-between align-items-center">Anne debut
+                          <span>:</span>
+                        </div>
+                        <div class="col-6">
+                          <%=experience.description %>
+                        </div>
+                      </div>
+                      <div class="row col-6 mb-4 d-flex align-items-center">
+                        <div class="col-6 fw-bold d-flex flex-row justify-content-between align-items-center">Anne debut
+                          <span>:</span>
+                        </div>
+                        <div class="col-6">
+                          <%=experience.debut %>
+                        </div>
+                      </div>
+      
+                      <div class="row col-6 mb-4 d-flex align-items-center">
+                        <div class="col-6 fw-bold d-flex flex-row justify-content-between align-items-center">Anne Fin
+                          <span>:</span>
+                        </div>
+                        <div class="col-6">
+                          <%= experience.fin%>
+                        </div>
+                      </div>
+                    </div>
+                    <% if(user && details.id==user.id){%>
+      
+                      <div class="col-12 d-flex justify-content-end">
+                        <a href="/editProfile/<%=user.id%>#Emplois" class=" btn btn-primary">
+                          <i class="fas fa-edit"></i> Editer
+                        </a>
+                      </div>
+                      <% } %>
+    <% })%>
+      <% }else{ %>
+        <div class="row">
+          <div class="text-secondary">Information non-disponible</div>
+        </div>
+        <% } %>
+  </div>
+  <%- include('footer.ejs') %>

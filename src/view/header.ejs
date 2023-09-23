@@ -6,15 +6,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>MANGOOSE.INC</title>
   <link href="../asset/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="../asset/fontAwesome/css/fontawesome.min.css">
-  <link rel="stylesheet" href="../asset/fontAwesome/css/brands.min.css">
-  <link rel="stylesheet" href="../asset/fontAwesome/css/solid.min.css">
-  <link rel="stylesheet" href="../asset/fontAwesome/css/regular.min.css">
-  <link rel="stylesheet" href="/css/main.css">
-  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../../asset/fontAwesome/css/fontawesome.min.css">
+  <link rel="stylesheet" href="../../asset/fontAwesome/css/brands.min.css">
+  <link rel="stylesheet" href="../../asset/fontAwesome/css/solid.min.css">
+  <link rel="stylesheet" href="../../asset/fontAwesome/css/regular.min.css">
+  <link rel="stylesheet" href="../..//css/main.css">
+  <link rel="stylesheet" href="../../css/main.css">
 </head>
 
 <body>
+<style>
+
+</style>
+
+
   <div class="container-fuide position-relative" style="height: 70px; z-index: 6;">
     <nav
       class="navbar col-12 navbar-expand-md navbar-light border-solid justify-content-space-bettewen align-items-center border-bottom px-3 position-fixed bg-light">
@@ -29,19 +34,19 @@
       </div>
       <% if(!user) {%>
         <div class="col-md-3 text-end">
-          <a href="sign-in">
+          <a href="/sign-in">
             <button type="button" class="btn btn-outline-primary">Inscrire</button>
           </a>
-          <a href="login">
+          <a href="/login">
             <button type="button" class="btn btn-primary">Connecter</button>
           </a>
         </div>
         <% }else{ %>
           <div class="col-md-3 d-flex align-items-center justify-content-end">
-            <a href="user/profile/<%=user.id%>" class="d-flex align-items-center">
+            <a href="/profile/<%=user.id%>" class="d-flex align-items-center">
               <img src="asset/img/test.png" class="img-circle mx-3" alt="" width="50px" height="50px" style="border-radius: 50%;">
               <div class="label">
-                <%= user.name? user.name : "Desir thierry" %>
+                <%= user.nomComplet? user.nomComplet : "no name " %>
               </div>
             </a>
           </div>

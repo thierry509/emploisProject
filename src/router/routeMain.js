@@ -10,5 +10,11 @@ route.get('/login', new MainControllers().login);
 route.get('/sign-in', new MainControllers().signIn)
 route.get('/candidat', new CandidatControllers().allCandidat);
 route.get('/emplois/:id', new MainControllers().emploisDetails)
-// route.get(assert)
+route.get('/profile/:id', new MainControllers().profile);
+route.get('/editProfile/:id', new MainControllers().editProfile);
+route.get('/registerEtude/:id', new CandidatControllers().registerEtude);
+route.get('/registerExperience/:id', new CandidatControllers.registerExperience);
+route.post('/updateCandidat/:id', new CandidatControllers().updateCandidat);
+route.post('/updateEtude/:id', new CandidatControllers().updateEtude)
+route.post('/updateExperience/:id', new CandidatControllers().updateExperience);
 module.exports = route;

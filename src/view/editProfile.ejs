@@ -1,85 +1,261 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Emplois</title>
-    <link href="/asset/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-</head>
-
-<body>
-    <div class="container-fuide position-relative" style="height: 70px; z-index: 6;">
-        <nav
-            class="navbar col-12 navbar-expand-md navbar-light border-solid justify-content-space-bettewen align-items-center border-bottom px-3 position-fixed bg-light">
-            <a href="/" class="nav-link fs-3 fw-light text-primary">Emplois</a>
-            <div class="collapse navbar-collapse" id="navbarcollapse">
-                <ul class="nav col-12 justify-content-center fs-6 text-dark">
-                    <li class="nav-item"><a class="nav-link" href="#">Acceuil</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Post d'Emplois</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">A propos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Feedbacks</a></li>
-                </ul>
-            </div>
-
-            <div class="col-md-3 text-end">
-                <button type="button" class="btn btn-outline-primary">Inscrire</button>
-                <button type="button" class="btn btn-primary">Connecter</button>
-            </div>
-            <button type="button" class="navbar-toggler" data-bas-toogle="collapse" data-bs-target="#navbarCollapse"
-                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toogle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        </nav>
-    </div>
+<%- include('header.ejs') %>
     <div class="row d-flex justify-content-center">
         <h1 class="h3 text-center fw-semibold text-primary my-4">Modifier profile</h1>
-        <form action="" class="col-11">
+        <form action="/updateCandidat/<%=user.id%>" method="post" class="col-11">
             <div class="row">
                 <div class="profil border col-md-4">
-                    <input type="image" src="/asset/img/téléchargement.png" class="border border-circle" alt="" name="profile">
+                    <input type="image" src="/asset/img/téléchargement.png" class="border border-circle" alt=""
+                        name="profile">
                 </div>
             </div>
             <div class="row">
-                <div class="col-6 form-floating mb-4">
-                    <input type="text" class="form-control" placeholder="nom" id="nom">
+                <div class="col-md-6 form-floating mb-4">
+                    <input type="text" class="form-control" placeholder="nom" name="nom" value="<%=details.nom%>">
                     <label for="">Nom</label>
                 </div>
-                <div class="col-6 form-floating mb-4">
-                    <input type="text" class="form-control" placeholder="nom" id="nom">
+                <div class="col-md-6 form-floating mb-4">
+                    <input type="text" class="form-control" placeholder="nom" name="prenom" value="<%=details.prenom%>">
                     <label for="">Prenom</label>
                 </div>
-                <div class="col-6 form-floating mb-4">
+                <!-- <div class="col-md-6 form-floating mb-4">
+                    <input type="text" class="form-control" placeholder="nom" name="email" value="<%=details.email%>">
+                    <label for="">Email</label>
+                </div> -->
+                <div class="col-md-6 form-floating mb-4">
                     <select name="sexe" id="sexe" class="form-select" aria-placeholder="2">
-                        <option value="m">Masculin</option>
-                        <option value="f">Feminin</option>
+                        <%= details.sexe=='m' ? 'selected' :'' %>
+                            <option value="M" <%=details.sexe=='M' ? 'selected' :'' %>>Masculin</option>
+                            <option value="F" <%=details.sexe=='F' ? 'selected' :'' %>>Feminin</option>
                     </select>
                     <label for="">Sexe</label>
                 </div>
-                <div class="col-6 form-group mb-4">
+                <div class="col-md-6 form-group mb-4">
                     <label for="">Date de naissance</label>
-                    <input type="date" class="form-control" name="date" id="date" placeholder="2">
+                    <input type="date" class="form-control" name="date" id="date" placeholder="2"
+                        value="<%=details.dateDeNaiss.toISOString().slice(0,10)%>">
                 </div>
-                <div class="col-6 form-floating mb-4">
-                    <input type="tel" class="form-control" placeholder="nom" id="nom">
+                <div class="col-md-6 form-floating mb-4">
+                    <input type="tel" class="form-control" placeholder="nom" name="telephone" value="<%=details.telephone%>">
                     <label for="">Telephone</label>
                 </div>
-                <div class="col-6 form-floating mb-4">
-                    <input type="text" class="form-control" placeholder="nom" id="nom">
+                <div class="col-md-6 form-floating mb-4">
+                    <input type="text" class="form-control" placeholder="nom" name="ville" value="<%=details.ville%>">
                     <label for="">ville</label>
                 </div>
-                <div class="col-6 form-floating mb-4">
-                    <input type="text" class="form-control" placeholder="nom" id="nom">
+                <div class="col-md-6 form-floating mb-4">
+                    <input type="text" class="form-control" placeholder="nom" name="pays" value="<%=details.pays%>">
                     <label for="">Pays</label>
                 </div>
-                <div class="col-6 form-floating mb-4">
-                    <textarea name="competance" class="form-control" id="" cols="30" rows="10"></textarea>
+
+                <div class="col-12 form-group mb-4">
                     <label for="">Competance</label>
+                    <textarea name="competence" class="form-control" id="" cols="10"
+                        rows="5"> <%=details.competence%></textarea>
                 </div>
             </div>
             <div class="row d-flex justify-content-center">
                 <button type="submit" class="btn btn-primary col-md-4">Enregistrer</button>
             </div>
         </form>
+        <h1 class="h3 text-center fw-semibold text-primary my-4">Section Etude</h1>
+        <div class="col-md-10 d-flex justify-content-end mb-4">
+            <button class="btn btn-primary" id="addEtude-btn"> ajouter etude</button>
+        </div>
+        <div class="col-md-12 d-flex flex-column align-items-center" id="forms-etude">
+            <% if(etudes.length> 0) {%>
+                <% etudes.forEach(etude=> { %>
+                    <form action="/updateEtude/<%=user.id%>-<%= etude.id %>" method="post" class="row col-md-10 mb-4 p-1 border rounded">
+                       <h1 class="h5 text-secondary">Etude</h1>
+                        <div class="col-md-6 form-floating mb-4">
+                            <input type="text" class="form-control" placeholder="niveau" name="niveau"
+                                value="<%=etude.niveau%>">
+                            <label for="">Niveau</label>
+                        </div>
+                        <div class="col-md-6 form-floating mb-4">
+                            <input type="text" class="form-control" placeholder="nom" name="domaine"
+                                value="<%=etude.domaine%>">
+                            <label for="">Domaine</label>
+                        </div>
+                        <div class="col-md-6 form-floating mb-4">
+                            <input type="text" class="form-control" placeholder="nom" name="etablissement"
+                                value="<%=etude.etablissement%>">
+                            <label for="">Etablissement</label>
+                        </div>
+                        <div class="col-md-6 form-floating mb-4">
+                            <input type="text" class="form-control" placeholder="nom" name="pays"
+                                value="<%=etude.pays%>">
+                            <label for="">Pays</label>
+                        </div>
+                        <div class="col-md-6 form-floating mb-4">
+                            <input type="text" class="form-control" placeholder="nom" name="region"
+                                value="<%=etude.region%>">
+                            <label for="">Region</label>
+                        </div>
+                        <div class="col-md-6 form-floating mb-4">
+                            <input type="text" class="form-control" placeholder="nom" name="debut"
+                                value="<%=etude.dateDebut%>">
+                            <label for="">Anne debut</label>
+                        </div>
+                        <div class="col-md-6 form-floating mb-4">
+                            <input type="text" class="form-control" placeholder="nom" name="fin" value="<%=etude.dateFin%>">
+                            <label for="">Anne fin</label>
+                        </div>
+                        <div class="col-md-12 d-flex justify-content-end mb-4">
+                            <button class="btn btn-primary" type="submit">Mettre a jour</button>
+                        </div>
+                    </form>
+                  
+                    <% })} else{%>
+                        <div class="row">
+                            <div class="text-secondary">Pas d'etude Enregistrer</div>
+                        </div>
+                        <% }%>
+        </div>
+
+        <h1 class="h3 text-center fw-semibold text-primary my-4">Section Experience</h1>
+
+        <div class="col-md-12 d-flex flex-column align-items-center" id="forms-experience">
+            <% if(experiences.length> 0) {%>
+                <% experiences.forEach(experience=> { %>
+                    <form action="/updateExperience/<%=user.id%>-<%= experience.id %>" method="post" class="row col-md-10 mb-4 p-1 border rounded">
+                       <h1 class="h5 text-secondary">Etude</h1>
+                        <div class="col-md-6 form-floating mb-4">
+                            <input type="text" class="form-control" placeholder="niveau" name="domaine"
+                                value="<%=experience.domaine%>">
+                            <label for="">Domaine</label>
+                        </div>
+                        <div class="col-md-6 form-floating mb-4">
+                            <input type="text" class="form-control" placeholder="nom" name="entreprise"
+                                value="<%=experience.entreprise%>">
+                            <label for="">Entreprise</label>
+                        </div>
+                        <div class="col-md-6 form-floating mb-4">
+                            <input type="text" class="form-control" placeholder="nom" name="pays"
+                                value="<%=experience.pays%>">
+                            <label for="">Pays</label>
+                        </div>
+                        <div class="col-md-6 form-floating mb-4">
+                            <input type="text" class="form-control" placeholder="nom" name="region"
+                                value="<%=experience.region%>">
+                            <label for="">Region</label>
+                        </div>
+                        
+                        <div class="col-md-6 form-floating mb-4">
+                            <input type="text" class="form-control" placeholder="nom" name="description"
+                                value="<%=experience.description%>">
+                            <label for="">Anne debut</label>
+                        </div>
+                        <div class="col-md-6 form-floating mb-4">
+                            <input type="text" class="form-control" placeholder="nom" name="debut"
+                                value="<%=experience.debut%>">
+                            <label for="">Anne debut</label>
+                        </div>
+
+                        <div class="col-md-6 form-floating mb-4">
+                            <input type="text" class="form-control" placeholder="nom" name="fin" value="<%=experience.fin%>">
+                            <label for="">Anne fin</label>
+                        </div>
+                        <div class="col-md-12 d-flex justify-content-end mb-4">
+                            <button class="btn btn-primary" type="submit">Mettre a jour</button>
+                        </div>
+                    </form>
+                  
+                    <% })} else{%>
+                        <div class="row">
+                            <div class="text-secondary">Pas d'etude Enregistrer</div>
+                        </div>
+                        <% }%>
+        </div>
     </div>
-</body>
+    <template id="template-etude">
+        <form action="/addEtude" method="post" class="row col-md-10 mb-4 p-1 border border rounded">
+            <h1 class="h5 text-secondary">Etude</h1>
+            <div class="col-md-6 form-floating mb-4">
+                <input type="text" class="form-control" placeholder="niveau" nom="niveau">
+                <label for="">Niveau</label>
+            </div>
+            <div class="col-md-6 form-floating mb-4">
+                <input type="text" class="form-control" placeholder="nom" name="domaine">
+                <label for="">Domaine</label>
+            </div>
+            <div class="col-md-6 form-floating mb-4">
+                <input type="text" class="form-control" placeholder="nom" name="etablissement">
+                <label for="">Etablissement</label>
+            </div>
+            <div class="col-md-6 form-floating mb-4">
+                <input type="text" class="form-control" placeholder="nom" name="pays">
+                <label for="">Pays</label>
+            </div>
+            <div class="col-md-6 form-floating mb-4">
+                <input type="text" class="form-control" placeholder="nom" name="region">
+                <label for="">Region</label>
+            </div>
+            <div class="col-md-6 form-floating mb-4">
+                <input type="text" class="form-control" placeholder="nom" name="debut">
+                <label for="">Anne debut</label>
+            </div>
+            <div class="col-md-6 form-floating mb-4">
+                <input type="text" class="form-control" placeholder="nom" name="fin">
+                <label for="">Anne fin</label>
+            </div>
+            <div class="col-md-12 d-flex justify-content-end mb-4">
+                <button class="btn btn-primary" type="submit">Enregistrer</button>
+            </div>
+        </form>
+    </template>
+<template>
+    <form action="/ajoutExperience" method="post" class="row col-md-10 mb-4 p-1 border rounded">
+        <h1 class="h5 text-secondary">Etude</h1>
+         <div class="col-md-6 form-floating mb-4">
+             <input type="text" class="form-control" placeholder="niveau" nom="domaine"
+                 value="">
+             <label for="">Domaine</label>
+         </div>
+         <div class="col-md-6 form-floating mb-4">
+             <input type="text" class="form-control" placeholder="nom" name="entreprise"
+                 value="">
+             <label for="">Entreprise</label>
+         </div>
+         <div class="col-md-6 form-floating mb-4">
+             <input type="text" class="form-control" placeholder="nom" name="pays"
+                 value="">
+             <label for="">Pays</label>
+         </div>
+         <div class="col-md-6 form-floating mb-4">
+             <input type="text" class="form-control" placeholder="nom" name="region"
+                 value="">
+             <label for="">Region</label>
+         </div>
+         
+         <div class="col-md-6 form-floating mb-4">
+             <input type="text" class="form-control" placeholder="nom" name="description"
+                 value="">
+             <label for="">Anne debut</label>
+         </div>
+         <div class="col-md-6 form-floating mb-4">
+             <input type="text" class="form-control" placeholder="nom" name="debut"
+                 value="">
+             <label for="">Anne debut</label>
+         </div>
+
+         <div class="col-md-6 form-floating mb-4">
+             <input type="text" class="form-control" placeholder="nom" name="fin" value="">
+             <label for="">Anne fin</label>
+         </div>
+         <div class="col-md-12 d-flex justify-content-end mb-4">
+             <button class="btn btn-primary" type="submit">Mettre a jour</button>
+         </div>
+     </form>
+  
+</template>
+    <script>
+        const template = document.querySelector('#template-etude');
+        const btnAdd = document.querySelector("#addEtude-btn");
+        const formEtudes = document.querySelector('#forms-etude');
+        console.log(template);
+        btnAdd.addEventListener('click', () => {
+            let form = template.content.cloneNode(true);
+            formEtudes.append(form);
+        });
+    </script>
+    <%- include('footer.ejs') %>

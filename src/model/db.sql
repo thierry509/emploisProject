@@ -41,8 +41,8 @@ CREATE TABLE etude(
     etablissement VARCHAR(255) NOT NULL,
     pays VARCHAR(255) NOT NULL,
     region VARCHAR(255) NOT NULL,
-    dateDebut DATE NOT NULL,
-    dateFin DATE NOT NULL,
+    dateDebut VARCHAR(4) NOT NULL,
+    dateFin VARCHAR(4) NOT NULL,
     CONSTRAINT fk_id_candidat FOREIGN KEY(id_candidat) REFERENCES candidat(id_user)
 );
 
@@ -69,11 +69,11 @@ CREATE TABLE experience(
     id_candidat INT,
     domaine VARCHAR(255) NOT NULL,
     entreprise VARCHAR(255) NOT NULL,
-    paysdesc  VARCHAR(255) NOT NULL,
+    pays  VARCHAR(255) NOT NULL,
     region VARCHAR(255) NOT NULL,
     description VARCHAR(255) NOT NULL,
-    dateDebut DATE NOT NULL,
-    dateFin DATE NOT NULL,
+    debut VARCHAR(4) NOT NULL,
+    fin VARCHAR(4) NOT NULL,
     CONSTRAINT fk_id_candidat_experience FOREIGN KEY(id_candidat) REFERENCES candidat(id_user)
 );
 
@@ -120,16 +120,16 @@ INSERT INTO candidat (id_user, prenom, nom, sexe, dateDeNaiss, telephone, ville,
 
 -- Insertion dans la table Etude
 INSERT INTO etude (id, id_candidat, niveau, domaine, etablissement, pays, region, dateDebut, dateFin) VALUES
-(1, 1, 'Master', 'Informatique', 'Université A', 'France', 'Rhône-Alpes', '2010-09-01', '2012-06-30'),
-(2, 2, 'Bachelor', 'Art', 'College B', 'USA', 'New York', '2006-08-01', '2010-05-30'),
-(3, 3, 'Licence', 'Marketing', 'Université C', 'France', 'Île-de-France', '2012-09-01', '2015-06-30'),
-(4, 4, 'Master', 'Finance', 'University D', 'Canada', 'Québec', '2010-09-01', '2013-05-30'),
-(5, 5, 'Licence', 'Informatique', 'Universität E', 'Allemagne', 'Berlin', '2011-10-01', '2015-07-30'),
-(6, 6, 'Bachelor', 'Communication', 'Universidad F', 'Espagne', 'Catalogne', '2012-09-01', '2016-06-30'),
-(7, 7, 'Licence', 'Commerce', 'Università G', 'Italie', 'Lombardie', '2011-10-01', '2015-07-30'),
-(8, 8, 'Master', 'Ressources Humaines', 'Universidade H', 'Brésil', 'São Paulo', '2013-09-01', '2015-06-30'),
-(9, 9, 'Bachelor', 'Design', 'University I', 'Royaume-Uni', 'Angleterre', '2010-09-01', '2014-06-30'),
-(10, 10, 'Licence', 'Informatique', 'Universiteit J', 'Pays-Bas', 'Hollande-Septentrionale', '2012-09-01', '2016-06-30');
+(1, 1, 'Master', 'Informatique', 'Université A', 'France', 'Rhône-Alpes', '2010', '2012'),
+(2, 2, 'Bachelor', 'Art', 'College B', 'USA', 'New York', '2006', '2010'),
+(3, 3, 'Licence', 'Marketing', 'Université C', 'France', 'Île-de-France', '2012', '2015'),
+(4, 4, 'Master', 'Finance', 'University D', 'Canada', 'Québec', '2010', '2013'),
+(5, 5, 'Licence', 'Informatique', 'Universität E', 'Allemagne', 'Berlin', '2011', '2015'),
+(6, 6, 'Bachelor', 'Communication', 'Universidad F', 'Espagne', 'Catalogne', '2012', '2016'),
+(7, 7, 'Licence', 'Commerce', 'Università G', 'Italie', 'Lombardie', '2011', '2015'),
+(8, 8, 'Master', 'Ressources Humaines', 'Universidade H', 'Brésil', 'São Paulo', '2013', '2015'),
+(9, 9, 'Bachelor', 'Design', 'University I', 'Royaume-Uni', 'Angleterre', '2010', '2014'),
+(10, 10, 'Licence', 'Informatique', 'Universiteit J', 'Pays-Bas', 'Hollande-Septentrionale', '2012', '2016');
 
 -- Insertion dans la table Emplois
 INSERT INTO emplois (id, id_employeur, titre, domaine, spevialiter, dateDebut, dateFin, ville, zone, dure, introduction, qualification, fonction, conditionDeTravail) VALUES
@@ -145,16 +145,16 @@ INSERT INTO emplois (id, id_employeur, titre, domaine, spevialiter, dateDebut, d
 (10, 10, 'Ingénieur logiciel', 'Informatique', 'Développement de logiciels', '2012-08-20', '2017-12-15', 'Amsterdam', 'Technopark', 'Temps plein', 'Nous cherchons un ingénieur logiciel...', 'Expérience en développement de logiciels...', 'Conception et développement de logiciels...', 'Innovation et collaboration...');
 
 -- Insertion dans la table Experience
-INSERT INTO experience (id, id_candidat, domaine, entreprise, paysdesc, region, description, dateDebut, dateFin) VALUES
-(1, 1, 'Développement Web', 'Startup X', 'France', 'Paris', 'Travail sur le projet de développement web...', '2013-01-10', '2015-12-20'),
-(2, 2, 'Conception d_interfaces', 'Agency Y', 'USA', 'New York', 'Conception d_interfaces utilisateur...', '2016-02-05', '2020-06-25'),
-(3, 3, 'Stratégie Marketing', 'Marketing Solutions', 'France', 'Paris', 'Gestion de la stratégie marketing...', '2011-09-15', '2014-11-30'),
-(4, 4, 'Analyse Financière', 'Financial Services', 'Canada', 'Montréal', 'Analyse financière approfondie...', '2014-03-01', '2017-08-15'),
-(5, 5, 'Développement de Logiciels', 'Software Innovators', 'Allemagne', 'Berlin', 'Développement de logiciels avancés...', '2013-06-25', '2016-12-31'),
-(6, 6, 'Gestion des Relations Publiques', 'PR Experts', 'Espagne', 'Barcelone', 'Gestion des relations publiques et de la communication...', '2015-08-10', '2021-03-15'),
-(7, 7, 'Vente en Magasin', 'Retail Shop', 'Italie', 'Rome', 'Vente de produits en magasin...', '2012-01-01', '2016-07-31'),
-(8, 8, 'Ressources Humaines', 'HR Solutions', 'Brésil', 'Sao Paulo', 'Gestion des ressources humaines et du recrutement...', '2014-04-15', '2016-12-31'),
-(9, 9, 'Conception Graphique', 'Design Studio', 'Royaume-Uni', 'Londres', 'Conception graphique et artistique...', '2010-11-20', '2014-09-30'),
-(10, 10, 'Développement de Logiciels', 'Tech Innovations', 'Pays-Bas', 'Amsterdam', 'Conception et développement de logiciels...', '2012-08-25', '2017-12-31');
+INSERT INTO experience (id, id_candidat, domaine, entreprise, pays, region, description, debut, fin) VALUES
+(1, 1, 'Développement Web', 'Startup X', 'France', 'Paris', 'Travail sur le projet de développement web...', '2013', '2015'),
+(2, 2, 'Conception d_interfaces', 'Agency Y', 'USA', 'New York', 'Conception d_interfaces utilisateur...', '2016', '2020'),
+(3, 3, 'Stratégie Marketing', 'Marketing Solutions', 'France', 'Paris', 'Gestion de la stratégie marketing...', '2011', '2014'),
+(4, 4, 'Analyse Financière', 'Financial Services', 'Canada', 'Montréal', 'Analyse financière approfondie...', '2014', '2017'),
+(5, 5, 'Développement de Logiciels', 'Software Innovators', 'Allemagne', 'Berlin', 'Développement de logiciels avancés...', '2013', '2016'),
+(6, 6, 'Gestion des Relations Publiques', 'PR Experts', 'Espagne', 'Barcelone', 'Gestion des relations publiques et de la communication...', '2015', '2021'),
+(7, 7, 'Vente en Magasin', 'Retail Shop', 'Italie', 'Rome', 'Vente de produits en magasin...', '2012', '2016'),
+(8, 8, 'Ressources Humaines', 'HR Solutions', 'Brésil', 'Sao Paulo', 'Gestion des ressources humaines et du recrutement...', '2014', '2016'),
+(9, 9, 'Conception Graphique', 'Design Studio', 'Royaume-Uni', 'Londres', 'Conception graphique et artistique...', '2010', '2014'),
+(10, 10, 'Développement de Logiciels', 'Tech Innovations', 'Pays-Bas', 'Amsterdam', 'Conception et développement de logiciels...', '2012', '2017');
 
 -- Fin de l'insertion des données.            console.log(emplois);

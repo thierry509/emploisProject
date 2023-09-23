@@ -1,15 +1,106 @@
+const { request, response } = require("express");
 const TableCandidat = require("../model/Table/TableCandidat");
 const Controllers = require("./Controller");
 
-class CandidatControllers extends Controllers{
-    constructor(){
+class CandidatControllers extends Controllers {
+    constructor() {
         super();
         this.tableCandidat = new TableCandidat();
     }
-    allCandidat = (request, response)=>{
-        new TableCandidat().allCandidat(candidat=>{
+    allCandidat = (request, response) => {
+        new TableCandidat().allCandidat(candidat => {
             response.send(this.return_json(candidat));
         });
+    }
+
+    updateCandidat = (request, response) => {
+        const id = request.params.id;
+        let user = request.session.auth;
+        const body = request.body;
+        if (user != undefined) {
+            if (user.id == id) {
+                new TableCandidat().updateCandidat(id, body.nom, body.prenom, body.sexe, body.date, body.telephone, body.ville, body.pays, body.competence)
+                    .then(res => {
+                        response.redirect(`/editProfile/${id}`)
+                    });
+            }
+            else {
+                response.redirect('/')
+            }
+        }
+        else {
+            response.redirect('/');
+        }
+    }
+
+    updateEtude = (request, response) => {
+        const id = request.params.id.split('-');
+        let user = request.session.auth;
+        const userId = id[0], etudeId = id[1];
+        const body = request.body;
+        console.log(body);
+        if (user != undefined) {
+            if (user.id == userId) {
+                new TableCandidat().updateEtude(body.niveau, body.domaine, body.etablissement, body.pays, body.region, body.debut, body.fin, etudeId)
+                    .then(res => {
+                        response.redirect(`/editProfile/${userId}`)
+                    });
+            }
+            else {
+                response.redirect('/')
+            }
+        }
+        else {
+            response.redirect('/');
+        }
+    }
+
+    updateExperience = (request, response) => {
+        const id = request.params.id.split('-');
+        let user = request.session.auth;
+        const userId = id[0], ExpId = id[1];
+        const body = request.body;
+        console.log(body);
+        if (user != undefined) {
+            if (user.id == userId) {
+                new TableCandidat().updateExperience(body.domaine, body.entreprise, body.pays, body.region, body.description, body.debut, body.fin, ExpId)
+                    .then(res => {
+                        response.redirect(`/editProfile/${userId}`)
+                    });
+            }
+            else {
+                response.redirect('/')
+            }
+        }
+        else {
+            response.redirect('/');
+        }
+    }
+
+    registerEtude = (request, response) => {
+        const id = request.params.id;
+        let user = request.session.auth;
+        const { niveau, domaine, etablissement, pays, region, debut, fin } = request.body;
+        const body = request.body;
+        console.log(body);
+        if (user != undefined) {
+            if (user.id == id) {
+                new TableCandidat().saveEtude(niveau, domaine, etablissement, pays, region, debut, fin)
+                    .then(res => {
+                        response.redirect(`/editProfile/${userId}`)
+                    });
+            }
+            else {
+                response.redirect('/')
+            }
+        }
+        else {
+            response.redirect('/');
+        }
+    }
+
+    registerExperience = (request, response) => {
+
     }
 }
 
