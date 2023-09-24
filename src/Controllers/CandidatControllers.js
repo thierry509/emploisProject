@@ -81,13 +81,12 @@ class CandidatControllers extends Controllers {
         const id = request.params.id;
         let user = request.session.auth;
         const { niveau, domaine, etablissement, pays, region, debut, fin } = request.body;
-        const body = request.body;
-        console.log(body);
+        console.log(request.body);
         if (user != undefined) {
             if (user.id == id) {
-                new TableCandidat().saveEtude(niveau, domaine, etablissement, pays, region, debut, fin)
+                new TableCandidat().saveEtude(niveau, domaine, etablissement, pays, region, debut, fin, user.id)
                     .then(res => {
-                        response.redirect(`/editProfile/${userId}`)
+                        response.redirect(`/editProfile/${user.id}`)
                     });
             }
             else {
@@ -100,7 +99,24 @@ class CandidatControllers extends Controllers {
     }
 
     registerExperience = (request, response) => {
-
+        const id = request.params.id;
+        let user = request.session.auth;
+        const {domaine, entreprise, pays, region, description, debut, fin } = request.body;
+        console.log(request.body);
+        if (user != undefined) {
+            if (user.id == id) {
+                new TableCandidat().saveExperience(user.id, domaine, entreprise, pays, region, description, debut, fin)
+                    .then(res => {
+                        response.redirect(`/editProfile/${user.id}`)
+                    }); 
+            }
+            else {
+                response.redirect('/')
+            }
+        }
+        else {
+            response.redirect('/');
+        }
     }
 }
 

@@ -1,6 +1,7 @@
 const Authentification = require("../Auth/Authentification");
 const Utils = require("../Utils/Utils");
 const TableUser = require("../model/Table/UserTable");
+const { use } = require("../router/routeMain");
 const Controllers = require("./Controller");
 const bcrypt = require('bcrypt')
 
@@ -15,6 +16,8 @@ class AuthControllers extends Controllers {
                 response.redirect('/');
             })
             .catch(message => {
+            console.log(message);
+
                 response.redirect('/login');
             })
     }

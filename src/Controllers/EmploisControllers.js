@@ -1,7 +1,7 @@
 const TableEmplois = require("../model/Table/TableEmplois");
 const Controllers = require("./Controller");
 
-class EmploisControlers extends Controllers{
+class EmploisControllers extends Controllers{
     test = (req, res)=>{
         res.send("Bonjour");
     }
@@ -23,5 +23,9 @@ class EmploisControlers extends Controllers{
     emploisDetails = (request, response)=>{
         
     }
+
+    addEmploi = ()=>{
+        
+    }
 }
-module.exports = EmploisControlers;
+module.exports = EmploisControllers;

@@ -1,0 +1,78 @@
+<%- include('header.ejs') %>
+    <div class="container">
+        <div class="head-p text-start py-1 fw-bold border-bottom text-primary row d-flex align-items-center">
+            <h1 class="h5 col-11">Employeur</h1>
+            <div class="image col-1 h-50">
+                <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image" width="40px">
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="table row">
+                <div class="col-6 row mb-3 d-flex align-items-center">
+                    <div class="col-6 fw-bold d-flex flex-row justify-content-between align-items-center">Nom
+                        <span>:</span>
+                    </div>
+                    <div class="col-6 text-secondary">
+                        <%= details.nom %>
+                    </div>
+                </div>
+
+                <div class="col-6 mb-3 row d-flex align-items-center">
+                    <div class="col-6 fw-bold d-flex flex-row justify-content-between align-items-center">Pays
+                        <span>:</span>
+                    </div>
+                    <div class="col-6 text-secondary">
+                        <%= details.pays? details.pays : 'non dispodible' %>
+                    </div>
+                </div>
+                <div class="col-6 mb-2 row d-flex align-items-center">
+                    <div class="col-6 fw-bold d-flex flex-row justify-content-between align-items-center">Ville
+                        <span>:</span>
+                    </div>
+                    <div class="col-6 text-secondary">
+                        <%= (details.ville? details.ville : 'non dispodible' ) %>
+                    </div>
+                </div>
+
+                <div class="col-6 mb-2 row d-flex align-items-center">
+                    <div class="col-6 fw-bold d-flex flex-row justify-content-between align-items-center">Ville
+                        <span>:</span>
+                    </div>
+                    <div class="col-6 text-secondary">
+                        <%= (details.email? details.email : 'non dispodible' ) %>
+                    </div>
+                </div>
+            </div>
+            <% if(user && details.id==user.id){%>
+
+                <div class="col-12 d-flex justify-content-end">
+                    <a href="/ajouterEmplois/<%=user.id%>" class=" btn btn-primary">
+                        <i class="fas fa-plus"></i> Ajoute emplois
+                    </a>
+                </div>
+            <% } %>
+            <div class="head-p text-start py-1 fw-bold border-bottom text-primary row d-flex align-items-center">
+                <h1 class="h5 col-11">List Emplois</h1>
+            </div>
+
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-3 mt-4" id="list-emplois">
+                <% emplois.forEach(emploi => {%>         
+                <div class="col mb-4">
+                  <div class="border border-2 border-primary rounded-4 p-1">
+                    <div class="d-flex">
+                      <div class="p-2 d-flex flex-column">
+                        <img src="../asset/img/test.png" class="img-thumbnail" alt="">
+                        <span class="fs-6 text-primary"><%= emploi.nom %></span>
+                      </div>
+                      <div class="border-start p-2">
+                        <div class="h4 fw-semibold"> <a href="/emplois/<%= emploi.id%>" class="link"><%= emploi.titre  %></a></div>
+                        <p class="p"><%= emploi.introduction %></p>
+            
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <% }); %>
+              </div>
+
+<%- include('footer.ejs') %>

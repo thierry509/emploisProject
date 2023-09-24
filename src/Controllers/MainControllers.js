@@ -1,5 +1,6 @@
 const TableCandidat = require("../model/Table/TableCandidat");
 const TableEmplois = require("../model/Table/TableEmplois");
+const TableEmployeur = require("../model/Table/TableEmployeur");
 const Controllers = require("./Controller");
 
 class MainControllers extends Controllers {
@@ -45,22 +46,46 @@ class MainControllers extends Controllers {
         let user = request.session.auth;
         new TableCandidat().candidat(id)
             .then(details => {
-                new TableCandidat().etude(details[0].id).then(etude => {
-                    new TableCandidat().experience(details[0].id)
-                        .then(experience => {
-                            response.render(
-                                this.path('profile.ejs'), {
-                                details: details[0],
-                                user: user,
-                                etudes: etude,
-                                experiences: experience
-                            }
-                            );
-                        });
-                });
+                if (details.length > 0) {
+                    new TableCandidat().etude(details[0].id).then(etude => {
+                        new TableCandidat().experience(details[0].id)
+                            .then(experience => {
+                                response.render(
+                                    this.path('profile.ejs'), {
+                                    details: details[0],
+                                    user: user,
+                                    etudes: etude,
+                                    experiences: experience
+                                }
+                                );
+                            });
+                    });
+                }
             });
     }
-
+    employeurDetails = (request, response) => {
+        const id = request.params.id;
+        let user = request.session.auth;
+        new TableEmployeur().employeur(id)
+            .then(details => {
+                if (details.length > 0) {
+                    console.log(details[0])
+                    new TableEmployeur().emplois(details[0].id)
+                        .then(emplois => {
+                            console.log(emplois);
+                            response.render(
+                                this.path('employeur.ejs'), {
+                                details: details[0],
+                                user: user,
+                                emplois : emplois
+                            }
+                            )
+                        })
+                } else {
+                    response.redirect('/');
+                }
+            });
+    }
     editProfile = (request, response) => {
         const id = request.params.id;
         const user = request.session.auth;
@@ -89,6 +114,25 @@ class MainControllers extends Controllers {
             }
         }
         else {
+            response.redirect('/');
+        }
+    }
+
+    addEmplois = (request, response)=>{
+        const id = request.params.id;
+        const user = request.session.auth;
+        if (user != undefined) {
+            if (user.id == id) {
+                response.render(
+                    this.path('addEmplois.ejs'),{
+                    user:user,    
+                }
+                )
+            }
+            else{
+                response.redirect('/');
+            }
+        }else{
             response.redirect('/');
         }
     }

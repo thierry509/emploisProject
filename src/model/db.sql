@@ -98,33 +98,19 @@ INSERT INTO employeur (id_user, nom, pays, ville) VALUES
 (2, 'Entreprise B', 'USA', 'New York'),
 (3, 'Company C', 'Canada', 'Toronto'),
 (4, 'Firma D', 'Allemagne', 'Berlin'),
-(5, 'Empresa E', 'Espagne', 'Madrid'),
-(6, 'Azienda F', 'Italie', 'Rome'),
-(7, 'Empresa G', 'Brésil', 'Sao Paulo'),
-(8, 'Company H', 'Royaume-Uni', 'Londres'),
-(9, 'Firma I', 'Pays-Bas', 'Amsterdam'),
-(10, 'Company J', 'Australie', 'Sydney');
+(5, 'Empresa E', 'Espagne', 'Madrid');
+
 
 -- Insertion dans la table Candidat
 INSERT INTO candidat (id_user, prenom, nom, sexe, dateDeNaiss, telephone, ville, pays, competence) VALUES
-(5, 'Jean', 'Dupont', 'M', '1990-05-15', '+1234567890', 'Lyon', 'France', 'Développement'),
 (6, 'Emma', 'Martin', 'F', '1988-12-02', '+9876543210', 'New York', 'USA', 'Design'),
 (7, 'Pierre', 'Leclerc', 'M', '1992-08-20', '+3345678901', 'Paris', 'France', 'Marketing'),
 (8, 'Sophie', 'Rousseau', 'F', '1991-04-17', '+1122334455', 'Montréal', 'Canada', 'Finance'),
 (9, 'Luc', 'Dubois', 'M', '1993-02-10', '+4455667788', 'Berlin', 'Allemagne', 'Informatique'),
-(10, 'Maria', 'Garcia', 'F', '1989-07-25', '+6677889900', 'Barcelone', 'Espagne', 'Communication'),
-(1, 'Luigi', 'Rossi', 'M', '1990-11-30', '+1122334455', 'Rome', 'Italie', 'Vente'),
-(2, 'Carlos', 'Silva', 'M', '1992-06-15', '+3344556677', 'Sao Paulo', 'Brésil', 'RH'),
-(3, 'Emily', 'Johnson', 'F', '1988-03-05', '+1122334455', 'Londres', 'Royaume-Uni', 'Design'),
-(4, 'Anna', 'Bakker', 'F', '1991-09-12', '+5566778899', 'Amsterdam', 'Pays-Bas', 'Développement');
+(10, 'Maria', 'Garcia', 'F', '1989-07-25', '+6677889900', 'Barcelone', 'Espagne', 'Communication');
 
 -- Insertion dans la table Etude
 INSERT INTO etude (id, id_candidat, niveau, domaine, etablissement, pays, region, dateDebut, dateFin) VALUES
-(1, 1, 'Master', 'Informatique', 'Université A', 'France', 'Rhône-Alpes', '2010', '2012'),
-(2, 2, 'Bachelor', 'Art', 'College B', 'USA', 'New York', '2006', '2010'),
-(3, 3, 'Licence', 'Marketing', 'Université C', 'France', 'Île-de-France', '2012', '2015'),
-(4, 4, 'Master', 'Finance', 'University D', 'Canada', 'Québec', '2010', '2013'),
-(5, 5, 'Licence', 'Informatique', 'Universität E', 'Allemagne', 'Berlin', '2011', '2015'),
 (6, 6, 'Bachelor', 'Communication', 'Universidad F', 'Espagne', 'Catalogne', '2012', '2016'),
 (7, 7, 'Licence', 'Commerce', 'Università G', 'Italie', 'Lombardie', '2011', '2015'),
 (8, 8, 'Master', 'Ressources Humaines', 'Universidade H', 'Brésil', 'São Paulo', '2013', '2015'),
@@ -137,20 +123,9 @@ INSERT INTO emplois (id, id_employeur, titre, domaine, spevialiter, dateDebut, d
 (2, 2, 'Designer UX/UI', 'Design', 'Interface', '2015-03-10', '2020-06-25', 'New York', 'Downtown', 'Temps plein', 'Nous recherchons un designer...', 'Expérience dans la conception...', 'Conception d_interfaces...', 'Collaboratif et stimulant...'),
 (3, 3, 'Responsable Marketing', 'Marketing', 'Stratégie', '2011-09-05', '2014-11-15', 'Paris', 'Centre-ville', 'Temps plein', 'Rejoignez notre équipe marketing...', 'Expérience en marketing...', 'Gestion de campagnes publicitaires...', 'Équipe créative et innovante...'),
 (4, 4, 'Analyste financier', 'Finance', 'Analyse', '2014-02-20', '2017-07-30', 'Montréal', 'Centre-ville', 'Temps plein', 'Nous recherchons un analyste financier...', 'Diplôme en finance...', 'Analyse de données financières...', 'Environnement international...'),
-(5, 5, 'Développeur logiciel', 'Informatique', 'Logiciel', '2013-06-10', '2016-12-25', 'Berlin', 'Technopark', 'Temps plein', 'Rejoignez notre équipe de développement...', 'Expérience en développement logiciel...', 'Programmation de logiciels...', 'Culture de l_innovation...'),
-(6, 6, 'Responsable de la communication', 'Communication', 'Relations publiques', '2015-08-01', '2021-02-28', 'Barcelone', 'Centre-ville', 'Temps plein', 'Nous cherchons un responsable de la communication...', 'Expérience en communication...', 'Gestion des relations publiques...', 'Environnement diversifié...'),
-(7, 7, 'Vendeur en magasin', 'Commerce', 'Vente au détail', '2011-12-15', '2016-07-10', 'Rome', 'Centre-ville', 'Temps plein', 'Rejoignez notre équipe de vente...', 'Expérience en vente au détail...', 'Vente de produits en magasin...', 'Clientèle locale...'),
-(8, 8, 'Responsable des RH', 'Ressources Humaines', 'Recrutement', '2014-04-05', '2016-11-30', 'Sao Paulo', 'Zone financière', 'Temps plein', 'Nous cherchons un responsable des RH...', 'Expérience en gestion des RH...', 'Recrutement et gestion du personnel...', 'Environnement dynamique...'),
-(9, 9, 'Designer graphique', 'Design', 'Graphisme', '2010-11-10', '2014-09-05', 'Londres', 'Centre-ville', 'Temps plein', 'Rejoignez notre équipe de design...', 'Expérience en conception graphique...', 'Conception graphique et artistique...', 'Créativité au quotidien...'),
-(10, 10, 'Ingénieur logiciel', 'Informatique', 'Développement de logiciels', '2012-08-20', '2017-12-15', 'Amsterdam', 'Technopark', 'Temps plein', 'Nous cherchons un ingénieur logiciel...', 'Expérience en développement de logiciels...', 'Conception et développement de logiciels...', 'Innovation et collaboration...');
-
+(5, 5, 'Développeur logiciel', 'Informatique', 'Logiciel', '2013-06-10', '2016-12-25', 'Berlin', 'Technopark', 'Temps plein', 'Rejoignez notre équipe de développement...', 'Expérience en développement logiciel...', 'Programmation de logiciels...', 'Culture de l_innovation...');
 -- Insertion dans la table Experience
 INSERT INTO experience (id, id_candidat, domaine, entreprise, pays, region, description, debut, fin) VALUES
-(1, 1, 'Développement Web', 'Startup X', 'France', 'Paris', 'Travail sur le projet de développement web...', '2013', '2015'),
-(2, 2, 'Conception d_interfaces', 'Agency Y', 'USA', 'New York', 'Conception d_interfaces utilisateur...', '2016', '2020'),
-(3, 3, 'Stratégie Marketing', 'Marketing Solutions', 'France', 'Paris', 'Gestion de la stratégie marketing...', '2011', '2014'),
-(4, 4, 'Analyse Financière', 'Financial Services', 'Canada', 'Montréal', 'Analyse financière approfondie...', '2014', '2017'),
-(5, 5, 'Développement de Logiciels', 'Software Innovators', 'Allemagne', 'Berlin', 'Développement de logiciels avancés...', '2013', '2016'),
 (6, 6, 'Gestion des Relations Publiques', 'PR Experts', 'Espagne', 'Barcelone', 'Gestion des relations publiques et de la communication...', '2015', '2021'),
 (7, 7, 'Vente en Magasin', 'Retail Shop', 'Italie', 'Rome', 'Vente de produits en magasin...', '2012', '2016'),
 (8, 8, 'Ressources Humaines', 'HR Solutions', 'Brésil', 'Sao Paulo', 'Gestion des ressources humaines et du recrutement...', '2014', '2016'),

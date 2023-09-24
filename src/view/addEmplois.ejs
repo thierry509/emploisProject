@@ -1,0 +1,93 @@
+<%- include('header.ejs') %>
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <h1 class="h3 text-center fw-semibold text-primary my-4">Modifier profile</h1>
+            <form action="/addEmplois/<%=user.id%>" method="post" class="col-11">
+                <div class="row">
+                    <div class="profil border col-md-4">
+                        <input type="image" src="/asset/img/téléchargement.png" class="border border-circle" alt=""
+                            name="profile">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 form-floating mb-4">
+                        <input type="text" class="form-control" placeholder="nom" name="titre" value="">
+                        <label for="">Titre</label>
+                    </div>
+                    <div class="col-md-6 form-floating mb-4">
+                        <input type="text" class="form-control" placeholder="nom" name="domaine"
+                            value="">
+                        <label for="">Domaine</label>
+                    </div>
+                
+                   
+                    <div class="col-md-6 form-floating mb-4">
+                        <input type="text" class="form-control" placeholder="nom" name="specialiter"
+                            value="">
+                        <label for="">Specialiter</label>
+                    </div>
+
+                    <div class="col-md-6 form-floating mb-4">
+                        <input type="date" class="form-control" placeholder="nom" name="Debut"
+                            value="">
+                        <label for="">Date Debut</label>
+                    </div>
+
+                    <div class="col-md-6 form-floating mb-4">
+                        <input type="date" class="form-control" placeholder="nom" name="fin"
+                            value="">
+                        <label for="">Date Fin</label>
+                    </div>
+
+                    <div class="col-md-6 form-floating mb-4">
+                        <input type="text" class="form-control" placeholder="nom" name="pays" value="">
+                        <label for="">Pays</label>
+                    </div>
+
+
+                    <div class="col-md-6 form-floating mb-4">
+                        <input type="text" class="form-control" placeholder="nom" name="ville" value="">
+                        <label for="">ville</label>
+                    </div>
+
+
+                    <div class="col-md-6 form-floating mb-4">
+                        <input type="text" class="form-control" placeholder="nom" name="zone" value="">
+                        <label for="">zone</label>
+                    </div>
+                    
+                    <div class="col-md-6 form-floating mb-4">
+                        <input type="text" class="form-control" placeholder="nom" name="durre" value="">
+                        <label for="">Durre</label>
+                    </div>
+
+
+                    <div class="col-12 form-group mb-4">
+                        <label for="">Intoduction</label>
+                        <textarea name="introduction" class="form-control" id="" cols="10"
+                            rows="5"> </textarea>
+                    </div>
+                    <div class="col-12 form-group mb-4">
+                        <label for="">Qualification</label>
+                        <textarea name="qualification" class="form-control" id="" cols="10"
+                            rows="5"> </textarea>
+                    </div>
+                    <div class="col-12 form-group mb-4">
+                        <label for="">Fonction</label>
+                        <textarea name="fonction" class="form-control" id="" cols="10"
+                            rows="5"> </textarea>
+                    </div>
+                    <div class="col-12 form-group mb-4">
+                        <label for="">Condition de travail</label>
+                        <textarea name="fonction" class="form-control" id="" cols="10"
+                            rows="5">Condition</textarea>
+                    </div>
+                </div>
+                <div class="row d-flex justify-content-center">
+                    <button type="submit" class="btn btn-primary col-md-4">Enregistrer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    </div>
+    <%- include('footer.ejs') %>

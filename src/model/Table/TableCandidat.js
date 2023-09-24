@@ -54,9 +54,9 @@ class TableCandidat extends Table {
 
     saveEtude = (niveau, domaine, etablissement, pays, region, debut, fin, id) => {
         return new Promise((resolve, reject) => {
-            this.database.insertData('INSERT INTO etude(id_candidat, niveau, domaine, etablissement, pays, dateDebut, dateFin) VALUE(?, ?, ?, ?, ?, ?, ?, ?)',
+            this.database.insertData('INSERT INTO etude(id_candidat, niveau, domaine, etablissement, pays, region,dateDebut, dateFin) VALUE(?, ?, ?, ?, ?, ?, ?, ?)',
                 [id, niveau, domaine, etablissement, pays, region, debut, fin])
-                .then(res + resolve(res))
+                .then(res => resolve(res))
                 .catch(e => reject(e));
         })
     }
@@ -65,7 +65,7 @@ class TableCandidat extends Table {
         return new Promise((resolve, reject) => {
             this.database.insertData('iNSERT INTO experience(id_candidat, domaine, entreprise, pays, region, description, debut, fin) VALUE(?, ?, ?, ?, ?, ?, ?, ?)',
                 [id, domaine, entreprise, pays, region, description, debut, fin])
-                .then(res + resolve(res))
+                .then(res => resolve(res))
                 .catch(e => reject(e));
         });
     }
