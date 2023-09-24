@@ -12,7 +12,7 @@ class TableEmployeur extends Table {
     emplois = (id_employeur) => {
         return new Promise((resolve, reject) => {
             this.database.get_data(
-                "SELECT * FROM emplois e JOIN employeur em ON e.id_employeur = em.id_user WHERE em.id_user = ?",
+                "SELECT *, CONCAT(SUBSTRING_INDEX(introduction, ' ', 5), '...' )AS intro FROM emplois e JOIN employeur em ON e.id_employeur = em.id_user WHERE em.id_user = ?",
                 [id_employeur]
             )
                 .then(emplois => resolve(emplois))

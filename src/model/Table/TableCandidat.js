@@ -69,5 +69,15 @@ class TableCandidat extends Table {
                 .catch(e => reject(e));
         });
     }
+
+    application = (id_emplois, id_candidat) =>{
+        return new Promise((resolve, reject)=>{
+            this.database.insertData('INSERT INTO application(id_candidat, id_emplois) VALUES(?, ?)',
+            [id_candidat, id_emplois]
+            )
+            .then(res=>resolve(res))
+            .catch(e=>reject(e));
+        });
+    }
 }
 module.exports = TableCandidat;

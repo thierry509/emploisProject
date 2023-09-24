@@ -4,7 +4,7 @@ class TableEmplois extends Table {
     allEmplois = () => {
         return new Promise((resolve, reject) => {
             this.database.get_data(
-                'SELECT * FROM emplois', []
+                'SELECT *, CONCAT(SUBSTRING_INDEX(introduction, " ", 5), "..." )AS intro FROM emplois', []
             )
                 .then(emplois => resolve(emplois))
                 .catch(reject);
@@ -14,7 +14,7 @@ class TableEmplois extends Table {
     recentEmplois = () => {
         return new Promise((resolve, reject) => {
             this.database.get_data(
-                "SELECT * FROM emplois LIMIT 7", []
+                'SELECT *, CONCAT(SUBSTRING_INDEX(introduction, " ", 5), "..." )AS intro FROM emplois LIMIT 7', []
             )
                 .then(emplois => resolve(emplois));
         });

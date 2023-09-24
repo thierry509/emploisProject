@@ -78,6 +78,13 @@ CREATE TABLE experience(
     CONSTRAINT fk_id_candidat_experience FOREIGN KEY(id_candidat) REFERENCES candidat(id_user)
 );
 
+CREATE TABLE application(
+    id_candidat INT,
+    id_emplois INT,
+    CONSTRAINT pk_application PRIMARY KEY(id_candidat, id_emplois),
+    CONSTRAINT fk_id_candidat_application FOREIGN KEY(id_candidat) REFERENCES candidat(id_user),
+    CONSTRAINT fk_id_emploi FOREIGN KEY(id_emplois) REFERENCES emplois(id) 
+);
 -- Fin de la création des tables.AFTER
 
 -- Insertion dans la table User

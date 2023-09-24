@@ -41,8 +41,8 @@ class MainControllers extends Controllers {
                         user: user
                     });
                 }
-                else{
-                response.redirect('/')
+                else {
+                    response.redirect('/')
                 }
             });
     }
@@ -143,5 +143,18 @@ class MainControllers extends Controllers {
         }
     }
 
+    application = (request, response) => {
+        const id = request.params.id;
+        const user = request.session.auth;
+        if (user != undefined) {
+            new TableCandidat().application(parseInt(id), parseInt(user.id))
+            .then(res=>{
+                res.redirect('/')
+            });
+        }
+        else{
+            response.redirect('/login');
+        }
+    }
 }
 module.exports = MainControllers;
