@@ -32,7 +32,7 @@
                 <div class="col-md-6 form-group mb-4">
                     <label for="">Date de naissance</label>
                     <input type="date" class="form-control" name="date" id="date" placeholder="2"
-                        value="<%=details.dateDeNaiss.toISOString().slice(0,10)%>">
+                        value="<%=details.dateDeNaiss? details.dateDeNaiss.toISOString().slice(0,10) : ""%>">
                 </div>
                 <div class="col-md-6 form-floating mb-4">
                     <input type="tel" class="form-control" placeholder="nom" name="telephone" value="<%=details.telephone%>">
@@ -168,7 +168,7 @@
         </div>
     </div>
     <template id="template-etude">
-        <form action="/addEtude" method="post" class="row col-md-10 mb-4 p-1 border border rounded">
+        <form action="/addEtude/<%=user.id%>" method="post" class="row col-md-10 mb-4 p-1 border border rounded">
             <h1 class="h5 text-secondary">Etude</h1>
             <div class="col-md-6 form-floating mb-4">
                 <input type="text" class="form-control" placeholder="niveau" nom="niveau">

@@ -14,6 +14,9 @@ class MainControllers extends Controllers {
                     user: user
                 });
             })
+            .catch(e => {
+                console.log(e);
+            });
     }
     login = (request, response) => {
         if (request.session.auth == undefined) {
@@ -44,6 +47,9 @@ class MainControllers extends Controllers {
                 else {
                     response.redirect('/')
                 }
+            })
+            .catch(e => {
+                console.log(e);
             });
     }
 
@@ -64,9 +70,18 @@ class MainControllers extends Controllers {
                                     experiences: experience
                                 }
                                 );
+                            })
+                            .catch(e => {
+                                console.log(e);
                             });
-                    });
+                    })
+                        .catch(e => {
+                            console.log(e);
+                        });
                 }
+            })
+            .catch(e => {
+                console.log(e);
             });
     }
     employeurDetails = (request, response) => {
@@ -87,9 +102,15 @@ class MainControllers extends Controllers {
                             }
                             )
                         })
+                        .catch(e => {
+                            console.log(e);
+                        });
                 } else {
                     response.redirect('/');
                 }
+            })
+            .catch(e => {
+                console.log(e);
             });
     }
     editProfile = (request, response) => {
@@ -110,9 +131,18 @@ class MainControllers extends Controllers {
                                         experiences: experience
                                     }
                                     );
+                                })
+                                .catch(e => {
+                                    console.log(e);
                                 });
                         })
+                            .catch(e => {
+                                console.log(e);
+                            });
                     })
+                    .catch(e => {
+                        console.log(e);
+                    });
             }
             else {
                 console.log(user == id)
@@ -147,12 +177,17 @@ class MainControllers extends Controllers {
         const id = request.params.id;
         const user = request.session.auth;
         if (user != undefined) {
-            new TableCandidat().application(parseInt(id), parseInt(user.id))
-            .then(res=>{
-                res.redirect('/')
-            });
+            if (user.type == "candidat") {
+                new TableCandidat().application(parseInt(id), parseInt(user.id))
+                    .then(res => {
+                        response.redirect('/')
+                    })
+                    .catch(e => {
+                        console.log(e);
+                    });
+            }
         }
-        else{
+        else {
             response.redirect('/login');
         }
     }

@@ -5,7 +5,7 @@ class TableUser extends Table {
         return new Promise((resolve, reject) => {
             this.database.get_data("SELECT * FROM user WHERE email = ?", [email])
                 .then(user => resolve(user))
-                .catch(reject);
+                .catch(e=>reject(e));
         });
     }
 
@@ -16,8 +16,8 @@ class TableUser extends Table {
                 [id, email, password]
             )
             .then(user=>{
-                console.log( 'oii', user);
-                resolve(user)})
+                resolve(user)
+            })
             .catch((e)=>reject(e));
         });
     }

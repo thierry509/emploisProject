@@ -9,7 +9,6 @@ route.get('/allEmplois', new EmploisControllers().allEmplois)
 route.get('/', new MainControllers().home);
 route.get('/login', new MainControllers().login);
 route.get('/sign-in', new MainControllers().signIn)
-route.get('/candidat', new CandidatControllers().allCandidat);
 route.get('/emplois/:id', new MainControllers().emploisDetails)
 route.get('/profile/:id', new MainControllers().profile);
 route.get('/editProfile/:id', new MainControllers().editProfile);
@@ -22,5 +21,6 @@ route.post('/registerExperience/:id', new CandidatControllers().registerExperien
 route.post('/updateCandidat/:id', new CandidatControllers().updateCandidat);
 route.post('/updateEtude/:id', new CandidatControllers().updateEtude)
 route.post('/updateExperience/:id', new CandidatControllers().updateExperience);
-route.post('/addEmplois/:id', new EmploisControllers().addEmploi)
+route.post('/addEmplois/:id', new EmploisControllers().addEmploi);
+route.post('/addEtude/:id', new CandidatControllers().registerEtude);
 module.exports = route;

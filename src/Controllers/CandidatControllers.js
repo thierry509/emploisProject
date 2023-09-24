@@ -7,12 +7,6 @@ class CandidatControllers extends Controllers {
         super();
         this.tableCandidat = new TableCandidat();
     }
-    allCandidat = (request, response) => {
-        new TableCandidat().allCandidat(candidat => {
-            response.send(this.return_json(candidat));
-        });
-    }
-
     updateCandidat = (request, response) => {
         const id = request.params.id;
         let user = request.session.auth;
@@ -22,6 +16,9 @@ class CandidatControllers extends Controllers {
                 new TableCandidat().updateCandidat(id, body.nom, body.prenom, body.sexe, body.date, body.telephone, body.ville, body.pays, body.competence)
                     .then(res => {
                         response.redirect(`/editProfile/${id}`)
+                    })
+                    .catch(e=>{
+                        console.log(e);
                     });
             }
             else {
@@ -44,6 +41,9 @@ class CandidatControllers extends Controllers {
                 new TableCandidat().updateEtude(body.niveau, body.domaine, body.etablissement, body.pays, body.region, body.debut, body.fin, etudeId)
                     .then(res => {
                         response.redirect(`/editProfile/${userId}`)
+                    })
+                    .catch(e=>{
+                        console.log(e);
                     });
             }
             else {
@@ -66,6 +66,9 @@ class CandidatControllers extends Controllers {
                 new TableCandidat().updateExperience(body.domaine, body.entreprise, body.pays, body.region, body.description, body.debut, body.fin, ExpId)
                     .then(res => {
                         response.redirect(`/editProfile/${userId}`)
+                    })
+                    .catch(e=>{
+                        console.log(e);
                     });
             }
             else {
@@ -87,6 +90,9 @@ class CandidatControllers extends Controllers {
                 new TableCandidat().saveEtude(niveau, domaine, etablissement, pays, region, debut, fin, user.id)
                     .then(res => {
                         response.redirect(`/editProfile/${user.id}`)
+                    })
+                    .catch(e=>{
+                        console.log(e);
                     });
             }
             else {
@@ -108,6 +114,9 @@ class CandidatControllers extends Controllers {
                 new TableCandidat().saveExperience(user.id, domaine, entreprise, pays, region, description, debut, fin)
                     .then(res => {
                         response.redirect(`/editProfile/${user.id}`)
+                    })
+                    .catch(e=>{
+                        console.log(e);
                     }); 
             }
             else {

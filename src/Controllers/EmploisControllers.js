@@ -33,6 +33,9 @@ class EmploisControllers extends Controllers{
                 new TableEmplois().add(user.id, titre, domaine, specialiter, debut, fin,  ville, pays, zone, durre, introduction, qualification, fonction, condition)
                     .then(res => {
                         response.redirect(`/employeur/${user.id}`)
+                    })
+                    .catch(e=>{
+                        console.log(e);
                     });
                 
             }

@@ -7,7 +7,7 @@ class TableEmplois extends Table {
                 'SELECT *, CONCAT(SUBSTRING_INDEX(introduction, " ", 5), "..." )AS intro FROM emplois', []
             )
                 .then(emplois => resolve(emplois))
-                .catch(reject);
+                .catch(e=>reject(e));
         });
 
     }
@@ -16,7 +16,8 @@ class TableEmplois extends Table {
             this.database.get_data(
                 'SELECT *, CONCAT(SUBSTRING_INDEX(introduction, " ", 5), "..." )AS intro FROM emplois LIMIT 7', []
             )
-                .then(emplois => resolve(emplois));
+                .then(emplois => resolve(emplois))
+                .catch(e=>reject(e));
         });
     }
 
