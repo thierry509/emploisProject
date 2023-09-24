@@ -41,9 +41,7 @@
             <button type="button" class="btn btn-primary">Connecter</button>
           </a>
         </div>
-        <% }else{ 
-          if(user.type == "candidat"){
-          %>
+        <% }else{ %>
           <div class="col-md-3 d-flex align-items-center justify-content-end">
             <a href="/profile/<%=user.id%>" class="d-flex align-items-center">
               <img src="asset/img/test.png" class="img-circle mx-3" alt="" width="50px" height="50px" style="border-radius: 50%;">
@@ -52,18 +50,7 @@
               </div>
             </a>
           </div>
-          <% 
-        }else {
-          %>
-            <div class="col-md-3 d-flex align-items-center justify-content-end">
-            <a href="/employeur/<%=user.id%>" class="d-flex align-items-center">
-              <img src="asset/img/test.png" class="img-circle mx-3" alt="" width="50px" height="50px" style="border-radius: 50%;">
-              <div class="label">
-                <%= user.nom? user.nom : "no name " %>
-              </div>
-            </a>
-          </div>
-          <%}} %>
+          <% } %>
             <button type="button" class="navbar-toggler" data-bas-toogle="collapse" data-bs-target="#navbarCollapse"
               aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toogle navigation">
               <span class="navbar-toggler-icon"></span>

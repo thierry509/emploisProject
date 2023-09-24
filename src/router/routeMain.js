@@ -14,7 +14,7 @@ route.get('/profile/:id', new MainControllers().profile);
 route.get('/editProfile/:id', new MainControllers().editProfile);
 route.get('/employeur/:id', new MainControllers().employeurDetails);
 route.get('/ajouterEmplois/:id', new MainControllers().addEmplois);
-route.get('/application/:id', new MainControllers().application)
+route.get('/application/:id', new MainControllers().application);
 // Route post
 route.post('/registerEtude/:id', new CandidatControllers().registerEtude);
 route.post('/registerExperience/:id', new CandidatControllers().registerExperience);

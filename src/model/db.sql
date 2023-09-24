@@ -81,6 +81,7 @@ CREATE TABLE experience(
 CREATE TABLE application(
     id_candidat INT,
     id_emplois INT,
+    etat ENUM("attente", "accepter", "refuser") NOT NULL DEFAULT "attente",
     CONSTRAINT pk_application PRIMARY KEY(id_candidat, id_emplois),
     CONSTRAINT fk_id_candidat_application FOREIGN KEY(id_candidat) REFERENCES candidat(id_user),
     CONSTRAINT fk_id_emploi FOREIGN KEY(id_emplois) REFERENCES emplois(id) 
