@@ -19,5 +19,18 @@ class Utils {
             let id = Utils.generate();
         })
     }
+
+    static reduct(chaine) {
+        // Divise la chaîne en mots en utilisant l'espace comme séparateur
+        const mots = chaine.split(' ');
+      
+        // Sélectionne les cinq premiers mots en utilisant slice
+        const cinqPremiers = mots.slice(0, 5);
+      
+        // Rejoins les cinq premiers mots en une nouvelle chaîne
+        const resultat = cinqPremiers.join(' ');
+      
+        return resultat;
+    }
 }
 module.exports = Utils;

@@ -24,8 +24,25 @@ class EmploisControllers extends Controllers{
         
     }
 
-    addEmploi = ()=>{
-        
+    addEmploi = (request, response)=>{
+        const id = request.params.id;
+        let user = request.session.auth;
+        const {titre, domaine, specialiter, debut, fin, pays, ville, zone, durre, introduction, qualification, fonction, condition} = request.body;
+        if (user != undefined) {
+            if (user.id == id) {
+                new TableEmplois().add(user.id, titre, domaine, specialiter, debut, fin,  ville, pays, zone, durre, introduction, qualification, fonction, condition)
+                    .then(res => {
+                        response.redirect(`/employeur/${user.id}`)
+                    });
+                
+            }
+            else {
+                response.redirect('/')
+            }
+        }
+        else {
+            response.redirect('/');
+        }
     }
 }
 module.exports = EmploisControllers;

@@ -33,11 +33,17 @@ class MainControllers extends Controllers {
         let user = request.session.auth;
         new TableEmplois().emploisDetails(id)
             .then(details => {
-                response.render(
-                    this.path('emploisDetails.ejs'), {
-                    details: details[0],
-                    user: user
-                });
+                if (details.length == 1) {
+                    console.log(details);
+                    response.render(
+                        this.path('emploisDetails.ejs'), {
+                        details: details[0],
+                        user: user
+                    });
+                }
+                else{
+                response.redirect('/')
+                }
             });
     }
 
@@ -77,7 +83,7 @@ class MainControllers extends Controllers {
                                 this.path('employeur.ejs'), {
                                 details: details[0],
                                 user: user,
-                                emplois : emplois
+                                emplois: emplois
                             }
                             )
                         })
@@ -118,23 +124,24 @@ class MainControllers extends Controllers {
         }
     }
 
-    addEmplois = (request, response)=>{
+    addEmplois = (request, response) => {
         const id = request.params.id;
         const user = request.session.auth;
         if (user != undefined) {
             if (user.id == id) {
                 response.render(
-                    this.path('addEmplois.ejs'),{
-                    user:user,    
+                    this.path('addEmplois.ejs'), {
+                    user: user,
                 }
                 )
             }
-            else{
+            else {
                 response.redirect('/');
             }
-        }else{
+        } else {
             response.redirect('/');
         }
     }
+
 }
 module.exports = MainControllers;

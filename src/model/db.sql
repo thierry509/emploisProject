@@ -29,7 +29,7 @@ CREATE TABLE candidat(
     telephone VARCHAR(15),
     ville VARCHAR(255),
     pays VARCHAR(255),
-    competence VARCHAR(255),
+    competence TEXT(255),
     CONSTRAINT fk_id_user_candidat FOREIGN KEY(id_user) REFERENCES user(id)
 );
 
@@ -51,16 +51,17 @@ CREATE TABLE emplois(
     id_employeur INT,
     titre VARCHAR(255) NOT NULL,
     domaine VARCHAR(150) NOT NULL,
-    spevialiter VARCHAR(255) NOT NULL,
-    dateDebut DATE NOT NULL,
-    dateFin DATE NOT NULL,
+    specialiter VARCHAR(255) NOT NULL,
+    dateDebut VARCHAR(15) NOT NULL,
+    dateFin  VARCHAR(15) NOT NULL,
     ville VARCHAR(255) NOT NULL,
+    pays VARCHAR(255) NOT NULL,
     zone VARCHAR(255) NOT NULL,
     dure VARCHAR(150) NOT NULL,
-    introduction VARCHAR(255) NOT NULL,
-    qualification VARCHAR(255) NOT NULL,
-    fonction VARCHAR(255) NOT NULL,
-    conditionDeTravail VARCHAR(255) NOT NULL,
+    introduction TEXT NOT NULL,
+    qualification TEXT(255) NOT NULL,
+    fonction TEXT(255) NOT NULL,
+    conditionDeTravail TEXT(255) NOT NULL,
     CONSTRAINT fk_id_employeur FOREIGN KEY(id_employeur) REFERENCES employeur(id_user)
 );
 
@@ -118,12 +119,12 @@ INSERT INTO etude (id, id_candidat, niveau, domaine, etablissement, pays, region
 (10, 10, 'Licence', 'Informatique', 'Universiteit J', 'Pays-Bas', 'Hollande-Septentrionale', '2012', '2016');
 
 -- Insertion dans la table Emplois
-INSERT INTO emplois (id, id_employeur, titre, domaine, spevialiter, dateDebut, dateFin, ville, zone, dure, introduction, qualification, fonction, conditionDeTravail) VALUES
-(1, 1, 'Développeur Web', 'Informatique', 'Web', '2012-07-15', '2015-12-20', 'Paris', 'Centre-ville', 'Temps plein', 'Rejoignez notre équipe...', 'Diplôme en informatique...', 'Développement de sites web...', 'Environnement dynamique...'),
-(2, 2, 'Designer UX/UI', 'Design', 'Interface', '2015-03-10', '2020-06-25', 'New York', 'Downtown', 'Temps plein', 'Nous recherchons un designer...', 'Expérience dans la conception...', 'Conception d_interfaces...', 'Collaboratif et stimulant...'),
-(3, 3, 'Responsable Marketing', 'Marketing', 'Stratégie', '2011-09-05', '2014-11-15', 'Paris', 'Centre-ville', 'Temps plein', 'Rejoignez notre équipe marketing...', 'Expérience en marketing...', 'Gestion de campagnes publicitaires...', 'Équipe créative et innovante...'),
-(4, 4, 'Analyste financier', 'Finance', 'Analyse', '2014-02-20', '2017-07-30', 'Montréal', 'Centre-ville', 'Temps plein', 'Nous recherchons un analyste financier...', 'Diplôme en finance...', 'Analyse de données financières...', 'Environnement international...'),
-(5, 5, 'Développeur logiciel', 'Informatique', 'Logiciel', '2013-06-10', '2016-12-25', 'Berlin', 'Technopark', 'Temps plein', 'Rejoignez notre équipe de développement...', 'Expérience en développement logiciel...', 'Programmation de logiciels...', 'Culture de l_innovation...');
+INSERT INTO emplois (id, id_employeur, titre, domaine, specialiter, dateDebut, dateFin, ville, zone, dure, introduction, qualification, fonction, conditionDeTravail, pays) VALUES
+(1, 1, 'Développeur Web', 'Informatique', 'Web', '2012-07-15', '2015-12-20', 'Paris', 'Centre-ville', 'Temps plein', 'Rejoignez notre équipe...', 'Diplôme en informatique...', 'Développement de sites web...', 'Environnement dynamique...', 'Haiti'),
+(2, 2, 'Designer UX/UI', 'Design', 'Interface', '2015-03-10', '2020-06-25', 'New York', 'Downtown', 'Temps plein', 'Nous recherchons un designer...', 'Expérience dans la conception...', 'Conception d_interfaces...', 'Collaboratif et stimulant...', 'Haiti'),
+(3, 3, 'Responsable Marketing', 'Marketing', 'Stratégie', '2011-09-05', '2014-11-15', 'Paris', 'Centre-ville', 'Temps plein', 'Rejoignez notre équipe marketing...', 'Expérience en marketing...', 'Gestion de campagnes publicitaires...', 'Équipe créative et innovante...', 'Haiti'),
+(4, 4, 'Analyste financier', 'Finance', 'Analyse', '2014-02-20', '2017-07-30', 'Montréal', 'Centre-ville', 'Temps plein', 'Nous recherchons un analyste financier...', 'Diplôme en finance...', 'Analyse de données financières...', 'Environnement international...', 'Haiti'),
+(5, 5, 'Développeur logiciel', 'Informatique', 'Logiciel', '2013-06-10', '2016-12-25', 'Berlin', 'Technopark', 'Temps plein', 'Rejoignez notre équipe de développement...', 'Expérience en développement logiciel...', 'Programmation de logiciels...', 'Culture de l_innovation...', 'Haiti');
 -- Insertion dans la table Experience
 INSERT INTO experience (id, id_candidat, domaine, entreprise, pays, region, description, debut, fin) VALUES
 (6, 6, 'Gestion des Relations Publiques', 'PR Experts', 'Espagne', 'Barcelone', 'Gestion des relations publiques et de la communication...', '2015', '2021'),
