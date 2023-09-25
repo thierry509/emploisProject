@@ -1,11 +1,11 @@
 const nodemailer = require('nodemailer');
 class EMail{
-    constructor(service, user, pass){
+    constructor(){
         this.transporter = nodemailer.createTransport({
-            service: service, 
+            service: "Outlook", 
             auth: {
-              user: user, 
-              pass: pass 
+              user: "haitilimonade@hotmail.com", 
+              pass: "Qwertyu1234@" 
             }
           });
     }

@@ -1,5 +1,4 @@
 const Utils = require("../Utils/Utils");
-const sendEMail = require("../mail/SendEMail");
 const TableEmplois = require("../model/Table/TableEmplois");
 const Controllers = require("./Controller");
 
@@ -37,7 +36,11 @@ class EmploisControllers extends Controllers {
                         new TableEmplois().add(emploiId, user.id, titre, domaine, specialiter, debut, fin, ville, pays, zone, durre, introduction, qualification, fonction, condition)
                             .then(res => {
                                 response.redirect(`/employeur/${user.id}`);
-                                new sendEMail().emplois(emploiId)
+                                new Verification().emplois(emploiId)
+                                .then(data=>{
+                                    const {candidat, emplois} = data;
+                                Send .send(candidat, emplois);
+                                });
                             })
                             .catch(e => {
                                 console.log(e);

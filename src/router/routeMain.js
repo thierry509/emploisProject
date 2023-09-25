@@ -2,6 +2,7 @@ const express = require('express');
 const CandidatControllers = require('../Controllers/CandidatControllers');
 const MainControllers = require('../Controllers/MainControllers');
 const EmploisControllers = require('../Controllers/EmploisControllers');
+const TableCandidat = require('../model/Table/TableCandidat');
 const route = express.Router();
 
 route.get('/allEmplois', new EmploisControllers().allEmplois)
@@ -27,5 +28,11 @@ route.post('/updateEtude/:id', new CandidatControllers().updateEtude)
 route.post('/updateExperience/:id', new CandidatControllers().updateExperience);
 route.post('/addEmplois/:id', new EmploisControllers().addEmploi);
 route.post('/addEtude/:id', new CandidatControllers().registerEtude);
-
+route.get("/allcandidat", (req, response)=>{
+    new TableCandidat().allCandidat()
+    .then(candidat=>{
+        console.log(req.protocol + '://' + req.get('host'))
+        response.send(candidat);
+    })
+})
 module.exports = route;
