@@ -6,6 +6,7 @@ const routes = require('./router/routeMain');
 const routesEmplois = require('./router/RouteEmplois');
 const routeAuth = require('./router/authRout');
 const session = require('express-session');
+const Controllers = require('./Controllers/Controller');
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(session({
@@ -19,4 +20,7 @@ app.use('/', routes);
 app.use('/emplois', routesEmplois);
 app.use('/auth', routeAuth);
 app.use(express.static('static'));
+app.use((req, res) => {
+    res.status(404).render(new Controllers().path("404.ejs"));
+  });
 module.exports = app;

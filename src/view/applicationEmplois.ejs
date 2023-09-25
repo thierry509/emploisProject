@@ -1,0 +1,39 @@
+<%- include('header.ejs') %>
+  <div class="container">
+    <div class="header border-bottom mt-4 text-primary mb-4">
+      <h1 class="h4">Liste de vos applications</h1>
+    </div>
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Titre emplois</th>
+          <th scope="col">Etat</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% applications.forEach(application=>{%>
+          <tr>
+            <th scope="row">
+              <%= application.id_emplois %>
+            </th>
+            <td><a href="/emplois/<%= application.id_emplois%>">
+                <%= application.titre %>
+              </a></td>
+            <td>
+              <%=application.etat%>
+            </td>
+            <td>
+              <%if(application.etat !="accepter" ){%>
+                <a class="btn btn-success"
+                  href="/accepterCandidat/<%= application.id_candidat%>-<%= application.id_emplois %>">Accepter</a>
+                <a class="btn btn-danger" href="/refuserCandidat/<%=application.id_candidat%>">Refuser</a>
+                <% } %>
+            </td>
+          </tr>
+          <% }) %>
+      </tbody>
+    </table>
+  </div>
+  <%- include('footer.ejs') %>

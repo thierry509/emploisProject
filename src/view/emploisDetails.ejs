@@ -10,7 +10,11 @@
           <div class="col-4">
             <a href="/application/<%=details.id%>" class="btn btn-primary m-3">Apliquer maintenant <i class="bi bi-heart"></i></a>
           </div>
-          <% } %>
+          <% }else{ %>
+            <div class="col-4">
+              <a href="/applicationEmplois/<%=details.id%>" class="btn btn-primary m-3">Voir les candidature<i class="bi bi-heart"></i></a>
+            </div>
+            <% } %>
         </div>
         <div class="row text-secondary py-3">
           <div class="col-6">

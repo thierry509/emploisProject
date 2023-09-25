@@ -127,6 +127,28 @@ class CandidatControllers extends Controllers {
             response.redirect('/');
         }
     }
+
+    applicationCandidat = (request, response) =>{
+        const id = request.params.id;
+        let user = request.session.auth;
+        if (user != undefined) {
+            if(user.id == id){
+                new TableCandidat().getApplication(id)
+                .then(application=>{
+                    console.log(application);
+                    response.render(
+                        this.path('applicationCandidat.ejs'), {
+                            user : user,
+                            applications : application
+                        }
+                    )
+                })
+            }
+        }
+        else{
+            response.redirect('/');
+        }
+    }
 }
 
 module.exports = CandidatControllers

@@ -75,5 +75,10 @@ class AuthControllers extends Controllers {
                 })
         }
     }
+
+    disconnect = (request, response)=>{
+        request.session.auth = undefined;
+        response.redirect('/login')
+    }
 }
 module.exports = AuthControllers;

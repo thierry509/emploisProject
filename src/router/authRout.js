@@ -4,6 +4,7 @@ const route = express.Router();
 
 route.post('/login', new AuthControllers().login);
 route.post('/sign-in', new AuthControllers().signIn);
+route.get('/disconnect', new AuthControllers().disconnect)
 route.get('/', (req, res)=>{
     res.send('33333');
 });

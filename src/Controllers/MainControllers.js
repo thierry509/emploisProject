@@ -4,6 +4,12 @@ const TableEmployeur = require("../model/Table/TableEmployeur");
 const Controllers = require("./Controller");
 
 class MainControllers extends Controllers {
+    notFound = (request, response) =>{
+        response.render(
+            this.path("404.ejs")
+        );
+    }
+
     home = (request, response) => {
         let user = request.session.auth;
         new TableEmplois().recentEmplois()
@@ -180,7 +186,7 @@ class MainControllers extends Controllers {
             if (user.type == "candidat") {
                 new TableCandidat().application(parseInt(id), parseInt(user.id))
                     .then(res => {
-                        response.redirect('/')
+                        response.redirect(`/applicationCandidat/${user.id}`);
                     })
                     .catch(e => {
                         console.log(e);
@@ -191,5 +197,6 @@ class MainControllers extends Controllers {
             response.redirect('/login');
         }
     }
+
 }
 module.exports = MainControllers;
