@@ -25,10 +25,10 @@
               <%=application.etat%>
             </td>
             <td>
-              <%if(application.etat !="accepter" ){%>
+              <%if(application.etat !="accepter" && application.etat !="refuser"){%>
                 <a class="btn btn-success"
                   href="/accepterCandidat/<%= application.id_candidat%>-<%= application.id_emplois %>">Accepter</a>
-                <a class="btn btn-danger" href="/refuserCandidat/<%=application.id_candidat%>">Refuser</a>
+                <a class="btn btn-danger" href="/refuserCandidat/<%=application.id_candidat%>-<%= application.id_emplois%>">Refuser</a>
                 <% } %>
             </td>
           </tr>

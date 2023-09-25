@@ -8,6 +8,7 @@ class Authentification extends Controllers{
             new TableUser().getUserWithEmail(email)
             .then(user =>{
                 user = this.return_json(user)[0];
+                console.log("frist", user)
                 if(user.password == password){
                     new TableCandidat().candidat(user.id)
                     .then(candidat=>{
@@ -18,17 +19,17 @@ class Authentification extends Controllers{
                         }
                         else{
                             console.log('No candidate');
-                            reject()
+                            new TableEmployeur().employeur(user.id)
+                            .then(employeur=>{
+                                if(employeur.length == 1){
+                                    console.log("employeur")
+                                    resolve(employeur)
+                                }
+                            })
                         }
                     });
 
-                    new TableEmployeur().employeur(user.id)
-                    .then(employeur=>{
-                        if(employeur.length == 1){
-                            console.log("employeur")
-                            resolve(employeur)
-                        }
-                    })
+                   
                 }
             })
             .catch(()=> reject("Paire identifiant et mots de passe incorecte"));

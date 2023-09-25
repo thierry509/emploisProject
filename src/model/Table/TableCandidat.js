@@ -93,5 +93,13 @@ class TableCandidat extends Table {
                 .catch(e => reject(e));
         });
     }
+
+    deleteApplication = (idEmplois, idCandidat) =>{
+        return new Promise((resolve, reject)=>{
+            this.database.insertData(`DELETE FROM application WHERE id_emplois =${idEmplois} AND ${idCandidat}`)
+            .then(res=>resolve(res))
+            .catch(e=>reject(e));
+        });
+    }
 }
 module.exports = TableCandidat;

@@ -42,7 +42,7 @@ class AuthControllers extends Controllers {
                         .then(()=>{
                             new Authentification().authUser(email, password)
                             .then(user => {
-                                request.session.auth = user;
+                                request.session.auth = user[0];
                                 response.locals.user = request.session.auth;
                                 response.redirect('/');
                             })
@@ -59,7 +59,7 @@ class AuthControllers extends Controllers {
                         const name = form.name;
                         new TableUser().registerEmployeur(id, name)
                         .then(()=>{
-                            new AuthControllers().authUser(email, password)
+                            new Authentification().authUser(email, password)
                             .then(user => {
                                 request.session.auth = user;
                                 response.locals.user = request.session.auth;

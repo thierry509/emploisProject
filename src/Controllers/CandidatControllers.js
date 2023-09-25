@@ -1,4 +1,3 @@
-const { request, response } = require("express");
 const TableCandidat = require("../model/Table/TableCandidat");
 const Controllers = require("./Controller");
 
@@ -17,7 +16,7 @@ class CandidatControllers extends Controllers {
                     .then(res => {
                         response.redirect(`/editProfile/${id}`)
                     })
-                    .catch(e=>{
+                    .catch(e => {
                         console.log(e);
                     });
             }
@@ -42,7 +41,7 @@ class CandidatControllers extends Controllers {
                     .then(res => {
                         response.redirect(`/editProfile/${userId}`)
                     })
-                    .catch(e=>{
+                    .catch(e => {
                         console.log(e);
                     });
             }
@@ -67,7 +66,7 @@ class CandidatControllers extends Controllers {
                     .then(res => {
                         response.redirect(`/editProfile/${userId}`)
                     })
-                    .catch(e=>{
+                    .catch(e => {
                         console.log(e);
                     });
             }
@@ -91,7 +90,7 @@ class CandidatControllers extends Controllers {
                     .then(res => {
                         response.redirect(`/editProfile/${user.id}`)
                     })
-                    .catch(e=>{
+                    .catch(e => {
                         console.log(e);
                     });
             }
@@ -107,7 +106,7 @@ class CandidatControllers extends Controllers {
     registerExperience = (request, response) => {
         const id = request.params.id;
         let user = request.session.auth;
-        const {domaine, entreprise, pays, region, description, debut, fin } = request.body;
+        const { domaine, entreprise, pays, region, description, debut, fin } = request.body;
         console.log(request.body);
         if (user != undefined) {
             if (user.id == id) {
@@ -115,9 +114,9 @@ class CandidatControllers extends Controllers {
                     .then(res => {
                         response.redirect(`/editProfile/${user.id}`)
                     })
-                    .catch(e=>{
+                    .catch(e => {
                         console.log(e);
-                    }); 
+                    });
             }
             else {
                 response.redirect('/')
@@ -128,25 +127,41 @@ class CandidatControllers extends Controllers {
         }
     }
 
-    applicationCandidat = (request, response) =>{
+    applicationCandidat = (request, response) => {
         const id = request.params.id;
         let user = request.session.auth;
         if (user != undefined) {
-            if(user.id == id){
+            if (user.id == id) {
                 new TableCandidat().getApplication(id)
-                .then(application=>{
-                    console.log(application);
-                    response.render(
-                        this.path('applicationCandidat.ejs'), {
-                            user : user,
-                            applications : application
+                    .then(application => {
+                        console.log(application);
+                        response.render(
+                            this.path('applicationCandidat.ejs'), {
+                            user: user,
+                            applications: application
                         }
-                    )
-                })
+                        )
+                    })
             }
         }
-        else{
+        else {
             response.redirect('/');
+        }
+    }
+
+    deleteApplication = (request, response) => {
+        const id = request.params.id;
+        let user = request.session.auth;
+        if (user != undefined) {
+            new TableCandidat().deleteApplication(id, user.id)
+                .then(res => response.redirect(`/applicationCandidat/${user.id}`))
+                .catch(e => {
+                    console.log(e)
+                    response.redirect("/")
+                });
+        }
+        else {
+            response.redirect("/")
         }
     }
 }

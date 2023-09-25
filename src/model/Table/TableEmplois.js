@@ -45,7 +45,6 @@ class TableEmplois extends Table {
     }
 
     getApplication = (id_emplois)=>{
-        console.log(id_emplois);
         return new Promise((resolve, reject)=>{
             this.database.get_data(
                 "SELECT a.id_candidat, a.id_emplois, a.etat, e.titre FROM application a JOIN emplois e ON a.id_emplois = e.id JOIN candidat c ON a.id_candidat = c.id_user WHERE e.id = ?",
@@ -54,6 +53,36 @@ class TableEmplois extends Table {
             .then(application=>resolve(application))
             .catch(e=>reject(e));
         });
+    }
+    getApplicationWithEmployeur = (idEmployeur, idEmplois) =>{
+        return new Promise((resolve, reject)=>{
+            this.database.get_data(
+                'SELECT id, id_employeur FROM emplois WHERE id = ?',
+                [idEmplois]
+            )
+            .then(employeur=>resolve(employeur))
+            .catch(e=>reject(e));
+        });
+    }
+    accepteCandidat = (idCandidat, idEmplois)=>{
+        return new Promise((resolve, reject)=>{
+        this.database.get_data(
+            `UPDATE application SET etat = "accepter" WHERE id_candidat = ${idCandidat} AND id_emplois = ${idEmplois}`,
+            []
+        )
+        .then(res=>resolve(res))
+        .catch(e=>reject(e));
+    });
+    }
+    refuserCandidat = (idCandidat, idEmplois)=>{
+        return new Promise((resolve, reject)=>{
+        this.database.get_data(
+            `UPDATE application SET etat = "refuser" WHERE id_candidat = ${idCandidat} AND id_emplois = ${idEmplois}`,
+            []
+        )
+        .then(res=>resolve(res))
+        .catch(e=>reject(e));
+    });
     }
 }
 module.exports = TableEmplois;

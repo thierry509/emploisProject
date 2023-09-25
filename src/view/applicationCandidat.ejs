@@ -16,8 +16,8 @@
                     <tr>
                         <th scope="row"><%= application.id_emplois %></th>
                         <td><a href="/emplois/<%= application.id_emplois%>"><%= application.titre %></a></td>
-                        <td class="<%= application.etat == "refuser"? "text-danger": application.etat == "accepeter"? "text-success": "text-secondary"%>"><%=application.etat%></td>
-                        <td><a class="btn btn-danger" href="">Suprimmer</a></td>
+                        <td class="<%= application.etat == "refuser"? "text-danger": application.etat == "accepter"? "text-success": "text-secondary"%>"><%=application.etat%></td>
+                        <td><a class="btn btn-danger" href="/deleteApplication/<%= application.id_emplois%>">Suprimmer</a></td>
                       </tr>
                <% }) %>
               

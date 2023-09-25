@@ -1,6 +1,5 @@
 const TableEmplois = require("../model/Table/TableEmplois");
 const Controllers = require("./Controller");
-const { use } = require("../router/routeMain");
 
 class EmploisControllers extends Controllers {
     test = (req, res) => {
@@ -22,7 +21,7 @@ class EmploisControllers extends Controllers {
         });
     }
     emploisDetails = (request, response) => {
-        
+
     }
 
     addEmploi = (request, response) => {
@@ -58,10 +57,10 @@ class EmploisControllers extends Controllers {
                 .then(application => {
                     console.log(application);
                     response.render(
-                        this.path('applicationEmplois.ejs'),{
-                            user : user,
-                            applications : application
-                        }
+                        this.path('applicationEmplois.ejs'), {
+                        user: user,
+                        applications: application
+                    }
                     )
                 })
                 .catch(e => console.log(e));
@@ -69,15 +68,56 @@ class EmploisControllers extends Controllers {
         }
     }
 
-    accepterCandidat = (request, response) =>{
+    accepterCandidat = (request, response) => {
         const id = request.params.id.split("-");
         const idCandidat = id[0];
         const idEmplois = id[1];
         let user = request.session.auth;
         if (user != undefined) {
-            
+            new TableEmplois().getApplicationWithEmployeur(user.id, idEmplois)
+                .then(employeur => {
+                    console.log(employeur.lenght)
+                    if (employeur) {
+                        if (employeur[0].id_employeur == user.id) {
+                            new TableEmplois().accepteCandidat(idCandidat, idEmplois)
+                            .then(res=>response.redirect('/'))
+                            .catch(e=>console.log(e));
+                        }
+                    }
+                    else {
+                        console.log("non autoriser")
+                    }
+                })
+                .catch(e => console.log(e));
         }
-        else{
+        else {
+            response.redirect('/');
+        }
+    }
+
+    refuserCandidat = (request, response) =>{
+        const id = request.params.id.split("-");
+        const idCandidat = id[0];
+        const idEmplois = id[1];
+        let user = request.session.auth;
+        if (user != undefined) {
+            new TableEmplois().getApplicationWithEmployeur(user.id, idEmplois)
+                .then(employeur => {
+                    console.log(employeur.lenght)
+                    if (employeur) {
+                        if (employeur[0].id_employeur == user.id) {
+                            new TableEmplois().refuserCandidat(idCandidat, idEmplois)
+                            .then(res=>response.redirect('/'))
+                            .catch(e=>console.log(e));
+                        }
+                    }
+                    else {
+                        console.log("non autoriser")
+                    }
+                })
+                .catch(e => console.log(e));
+        }
+        else {
             response.redirect('/');
         }
     }

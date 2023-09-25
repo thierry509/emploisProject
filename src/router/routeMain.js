@@ -17,6 +17,8 @@ route.get('/application/:id', new MainControllers().application);
 route.get('/applicationCandidat/:id', new CandidatControllers().applicationCandidat);
 route.get('/applicationEmplois/:id', new EmploisControllers().applicationEmplois);
 route.get('/accepterCandidat/:id', new EmploisControllers().accepterCandidat)
+route.get('/refuserCandidat/:id', new EmploisControllers().refuserCandidat);
+route.get('/deleteApplication/:id', new CandidatControllers().deleteApplication)
 // Route post
 route.post('/registerEtude/:id', new CandidatControllers().registerEtude);
 route.post('/registerExperience/:id', new CandidatControllers().registerExperience);

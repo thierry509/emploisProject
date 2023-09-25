@@ -32,5 +32,19 @@ class Utils {
       
         return resultat;
     }
+
+    static haveSimilaritie(chaine1, chaine2) {
+        const mots1 = chaine1.split(' ');
+        const mots2 = chaine2.split(' ');
+      
+        const ensembleMots1 = new Set(mots1);
+      
+        for (const mot of mots2) {
+          if (ensembleMots1.has(mot)) {
+            return true;
+          }
+        }
+        return false;
+      }      
 }
 module.exports = Utils;
