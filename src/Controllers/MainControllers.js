@@ -96,10 +96,8 @@ class MainControllers extends Controllers {
         new TableEmployeur().employeur(id)
             .then(details => {
                 if (details.length > 0) {
-                    console.log(details[0])
                     new TableEmployeur().emplois(details[0].id)
                         .then(emplois => {
-                            console.log(emplois);
                             response.render(
                                 this.path('employeur.ejs'), {
                                 details: details[0],

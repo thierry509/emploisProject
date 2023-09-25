@@ -1,3 +1,5 @@
+const Utils = require("../Utils/Utils");
+const sendEMail = require("../mail/SendEMail");
 const TableEmplois = require("../model/Table/TableEmplois");
 const Controllers = require("./Controller");
 
@@ -30,14 +32,17 @@ class EmploisControllers extends Controllers {
         const { titre, domaine, specialiter, debut, fin, pays, ville, zone, durre, introduction, qualification, fonction, condition } = request.body;
         if (user != undefined) {
             if (user.id == id) {
-                new TableEmplois().add(user.id, titre, domaine, specialiter, debut, fin, ville, pays, zone, durre, introduction, qualification, fonction, condition)
-                    .then(res => {
-                        response.redirect(`/employeur/${user.id}`)
+                Utils.generateEmploisId()
+                    .then(emploiId => {
+                        new TableEmplois().add(emploiId, user.id, titre, domaine, specialiter, debut, fin, ville, pays, zone, durre, introduction, qualification, fonction, condition)
+                            .then(res => {
+                                response.redirect(`/employeur/${user.id}`);
+                                new sendEMail().emplois(emploiId)
+                            })
+                            .catch(e => {
+                                console.log(e);
+                            });
                     })
-                    .catch(e => {
-                        console.log(e);
-                    });
-
             }
             else {
                 response.redirect('/')
@@ -80,8 +85,8 @@ class EmploisControllers extends Controllers {
                     if (employeur) {
                         if (employeur[0].id_employeur == user.id) {
                             new TableEmplois().accepteCandidat(idCandidat, idEmplois)
-                            .then(res=>response.redirect('/'))
-                            .catch(e=>console.log(e));
+                                .then(res => response.redirect('/'))
+                                .catch(e => console.log(e));
                         }
                     }
                     else {
@@ -95,7 +100,7 @@ class EmploisControllers extends Controllers {
         }
     }
 
-    refuserCandidat = (request, response) =>{
+    refuserCandidat = (request, response) => {
         const id = request.params.id.split("-");
         const idCandidat = id[0];
         const idEmplois = id[1];
@@ -107,8 +112,8 @@ class EmploisControllers extends Controllers {
                     if (employeur) {
                         if (employeur[0].id_employeur == user.id) {
                             new TableEmplois().refuserCandidat(idCandidat, idEmplois)
-                            .then(res=>response.redirect('/'))
-                            .catch(e=>console.log(e));
+                                .then(res => response.redirect('/'))
+                                .catch(e => console.log(e));
                         }
                     }
                     else {

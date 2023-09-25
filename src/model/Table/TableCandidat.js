@@ -11,6 +11,13 @@ class TableCandidat extends Table {
         });
     }
 
+    allCandidat = () =>{
+        return new Promise((resolve, reject)=>{
+            this.database.get_data('SELECT * FROM candidat c JOIN user u ON u.id = c.id_user', [])
+            .then(candidats=>resolve(candidats))
+            .catch(e=>console.log(e));
+        });
+    }
     etude = (id_candidat) => {
         console.log(id_candidat)
         return new Promise((resolve, reject) => {

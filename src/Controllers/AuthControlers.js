@@ -32,7 +32,8 @@ class AuthControllers extends Controllers {
 
             // const password = bcrypt.genSalt(10).then(salt => bcrypt.hash(pass, salt));
         if (regexEmail.test(email) && email == emailConfirm && password == passwordConfirm) {
-            let id = Utils.generate();
+            let id = Utils.generateUserId().then(id=>{
+            console.log("In controllers", id);
             new TableUser().registerUser(id, email, password)
                 .then(result => {
                     if (form.type == "candidat") {
@@ -73,6 +74,7 @@ class AuthControllers extends Controllers {
                 }).catch((e) => {
                     console.log('echec', e)
                 })
+            })
         }
     }
 

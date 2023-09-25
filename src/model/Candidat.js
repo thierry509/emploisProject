@@ -1,5 +1,5 @@
 class Candidat extends User{
-    constructor(id, email, password){
+    constructor(id, email, nom,){
        this.idCandidat = idCandidat;
        this.prenom = prenom;
        this.nom = nom;
