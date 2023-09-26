@@ -9,13 +9,18 @@
   <link rel="stylesheet" href="/asset/fontAwesome/css/fontawesome.min.css">
   <link rel="stylesheet" href="/asset/fontAwesome/css/brands.min.css">
   <link rel="stylesheet" href="/asset/fontAwesome/css/solid.min.css">
-  <link rel="stylesheet" href="asset/fontAwesome/css/regular.min.css">
+  <link rel="stylesheet" href="/asset/fontAwesome/css/regular.min.css">
   <link rel="stylesheet" href="/css/login.css">
 </head>
 
 <body class="text-center">
   <main class="form-signin col-8">
     <form method="post" action="/auth/sign-in" id="register">
+      <% if(response.error ){%>
+        <div class="alert alert-danger">
+          <%= response.message %>
+        </div>
+        <% } %>
       <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
       <div class="d-flex flex-column align-items-center" id="part-1">
           <div class="col-md-6 my-4">
@@ -30,32 +35,25 @@
 
       <div class="d-none" id="part-2">
         <fieldset id="name" class="row">
-          <div class="form-floating mb-4 col-md-6">
-            <input type="text" class="form-control" name="firstName" id="prenom" placeholder="Joseph">
-            <label for="floatingInput">Nom</label>
-          </div>
-          <div class="form-floating mb-4 col-md-6">
-            <input type="text" class="form-control" name="lastName" id="nom" placeholder="Pierre">
-            <label for="floatingInput">prenom</label>
-          </div>
+          
         </fieldset>
         <fieldset id="fieldset-email" class="row">
           <div class="form-floating mb-4 col-md-6">
-            <input type="email" class="form-control" name="email" id="email" placeholder="name@example.com">
+            <input type="email" class="form-control form-control-sm" name="email" id="email" placeholder="name@example.com">
             <label for="floatingInput">Email</label>
           </div>
           <div class="form-floating mb-4 col-md-6">
-            <input type="email" class="form-control" name="emailConfirmation" id="email" placeholder="name@example.com">
+            <input type="email" class="form-control form-control-sm" name="emailConfirmation" id="email" placeholder="name@example.com">
             <label for="floatingInput">Confirmation Email</label>
           </div>
         </fieldset>
         <fieldset id="fieldset-password" class="row">
           <div class="form-floating mb-4 col-md-6">
-            <input type="password" class="form-control" name="password" id="password" placeholder="password">
+            <input type="password" class="form-control form-control-sm" name="password" id="password" placeholder="password">
             <label for="floatingInput">Password</label>
           </div>
           <div class="form-floating mb-4 col-md-6">
-            <input type="password" class="form-control" name="passwordConfirmation" placeholder="Password">
+            <input type="password" class="form-control form-control-sm" name="passwordConfirmation" placeholder="Password">
             <label for="floatingPassword">Confirmation Password</label>
           </div>
         </fieldset>
@@ -65,7 +63,7 @@
       </div>
       </div>
       <div class="row mt-3">
-        <a href="login" class="text-secondary">Vous avex un compte? connecter</a>
+        <a href="/login" class="text-secondary">Vous avex un compte? connecter</a>
       </div>
       <p class="mt-5 mb-3 text-muted">&copy;2023</p>
     </form>
@@ -73,11 +71,11 @@
 
   <template id="template-name">
     <div class="form-floating mb-4 col-md-6 col-md-12">
-      <input type="text" class="form-control" name="firstName" id="" placeholder="">
+      <input type="text" class="form-control" name="firstName" id="" placeholder="" required>
       <label for="floatingInput"></label>
     </div>
   </template>
-  <script src="js/sign-in.js"></script>
+  <script src="/js/sign-in.js"></script>
 </body>
 
 </html>

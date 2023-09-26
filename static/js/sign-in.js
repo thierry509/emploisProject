@@ -33,3 +33,6 @@ const templateBuild = (template, label, name, nbre) =>{
     }
     return tmp;
 }
+form.addEventListener('submit', (e)=>{
+    
+});

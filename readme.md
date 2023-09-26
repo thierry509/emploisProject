@@ -1,0 +1,1 @@
+Pour lancer le programme veuiller modifer le ficher .env avec les information de votre server de base de donner

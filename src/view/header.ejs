@@ -12,9 +12,9 @@
   <link rel="stylesheet" href="../../asset/fontAwesome/css/regular.min.css">
   <link rel="stylesheet" href="../..//css/main.css">
   <link rel="stylesheet" href="../../css/main.css">
-  <link href="asset/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
-  <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <link href="/asset/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="/dist/css/adminlte.min.css">
 
 </head>
 
@@ -25,8 +25,9 @@
 
 
   <div class="container-fuide position-relative" style="height: 70px; z-index: 6;">
-    <nav
-      class="navbar col-12 navbar-expand-md navbar-light border-solid justify-content-space-bettewen align-items-center border-bottom px-3 position-fixed bg-light">
+
+    <!-- <nav
+      class="navbar  d-none col-12 navbar-expand-md navbar-light border-solid justify-content-space-bettewen align-items-center border-bottom px-3 position-fixed bg-light">
       <a href="/" class="nav-link fs-3 fw-light text-primary">MANGOOSE.INC</a>
       <div class="collapse navbar-collapse" id="navbarcollapse">
         <ul class="nav col-12 justify-content-center fs-6 text-dark">
@@ -49,7 +50,8 @@
         <% }else{ if(user.type=="candidat" ){ %>
           <div class="col-md-3 d-flex align-items-center justify-content-end">
             <div class="dropdown">
-              <div href="/applicationCandidat/<%=user.id%>" type = "button" class="d-flex align-items-center dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown"
+              <div href="/applicationCandidat/<%=user.id%>" type="button"
+                class="d-flex align-items-center dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
                 <img src="asset/img/test.png" class="img-circle mx-3" alt="" width="50px" height="50px"
                   style="border-radius: 50%;">
@@ -67,24 +69,84 @@
           <% }else { %>
             <div class="col-md-3 d-flex align-items-center justify-content-end">
               <div class="dropdown">
-            <div class="d-flex align-items-center dropdown-toggle" type = "button" id="dropdownMenuButton" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
-                <img src="asset/img/test.png" class="img-circle mx-3" alt="" width="50px" height="50px"
-                  style="border-radius: 50%;">
-                <div class="label">
-                  <%= user.nom? user.nom : "no name " %>
+                <div class="d-flex align-items-center dropdown-toggle" type="button" id="dropdownMenuButton"
+                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <img src="asset/img/test.png" class="img-circle mx-3" alt="" width="50px" height="50px"
+                    style="border-radius: 50%;">
+                  <div class="label">
+                    <%= user.nom? user.nom : "no name " %>
+                  </div>
+                </div>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="/employeur/<%=user.id%>">Profile</a>
+                  <a class="dropdown-item" href="/auth/disconnect">Deconnextion</a>
                 </div>
               </div>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="/employeur/<%=user.id%>">Profile</a>
-                <a class="dropdown-item" href="/auth/disconnect">Deconnextion</a>
-              </div>
-            </div>
             </div>
             <%}} %>
               <button type="button" class="navbar-toggler" data-bas-toogle="collapse" data-bs-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toogle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
-    </nav>
+    </nav> -->
+    <header>
+      <nav class="navbar navbar-expand-md  fixed-top bg-light   position-fixed">
+        <div class="container">
+          <a href="/" class="nav-link fs-5 fw-bold text-primary">MANGOOSE.INC</a>
+
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon  text-dark d-flex justify-content-center align-items-center"><i class="fas fa-bars fs-1"></i></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav me-auto mb-2 mb-md-0 fs-5 text-dark">
+              <li class="nav-item"><a class="nav-link" href="/">Acceuil</a></li>
+              <li class="nav-item"><a class="nav-link" href="/">Post d'Emplois</a></li>
+              <li class="nav-item"><a class="nav-link" href="/contact">Feedbacks</a></li>
+            </ul>
+            <div class="d-flex">
+              <% if(!user) {%>
+                <div class="col-md-3 text-end d-flex justify-content-space-between">
+                  <a href="/sign-in" class="mx-1">
+                    <button type="button" class="btn btn-outline-primary">Inscrire</button>
+                  </a>
+                  <a href="/login" class="mx-1">
+                    <button type="button" class="btn btn-primary">Connecter</button>
+                  </a>
+                </div>
+                <% }else{ if(user.type=="candidat" ){ %>
+              <div class="dropdown">
+                <div type="button" class="d-flex align-items-center dropdown-toggle fs-6 btn btn-outline-dark"
+                  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <div class="label">
+                    <%= user.nomComplet? user.nomComplet : "no name " %>
+                  </div>
+                </div>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="/profile/<%=user.id%>"> <i class="fas fa-user px-3"></i>Profile</a>
+                <a class="dropdown-item" href="/applicationCandidat/<%=user.id%>"><i class="fas fa-list px-3"></i>Mes candidatures</a>
+                  <a class="dropdown-item" href="/auth/disconnect"> <i class="fas fa-sign-out-alt px-3"></i>Deconnextion</a>
+                </div>
+              </div>
+              <% }else { %>
+                <div class="dropdown">
+                  <div type="button" class="d-flex align-items-center dropdown-toggle fs-6 btn btn-outline-dark"
+                    id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <div class="label">
+                      <%= user.nom? user.nom : "no name " %>
+                    </div>
+                  </div>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="/employeur/<%=user.id%>"><i class="fas fa-user px-3"></i>Profile</a>
+                    <a class="dropdown-item" href="/auth/disconnect"> <i class="fas fa-sign-out-alt px-3"></i>Deconnextion</a>
+                  </div>
+                </div>
+                <%}} %>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+
   </div>

@@ -9,12 +9,12 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-6 form-floating mb-4">
-                    <input type="text" class="form-control" placeholder="nom" name="nom" value="<%=details.nom%>">
+                <div class="col-md-6 form-floatin mb-4">
+                    <input type="text" class="form-control form-control-sm" placeholder="nom" name="nom" value="<%=details.nom%>">
                     <label for="">Nom</label>
                 </div>
                 <div class="col-md-6 form-floating mb-4">
-                    <input type="text" class="form-control" placeholder="nom" name="prenom" value="<%=details.prenom%>">
+                    <input type="text" class="form-control form-control-sm" placeholder="nom" name="prenom" value="<%=details.prenom%>">
                     <label for="">Prenom</label>
                 </div>
                 <!-- <div class="col-md-6 form-floating mb-4">
@@ -22,7 +22,7 @@
                     <label for="">Email</label>
                 </div> -->
                 <div class="col-md-6 form-floating mb-4">
-                    <select name="sexe" id="sexe" class="form-select" aria-placeholder="2">
+                    <select name="sexe" id="sexe" class="form-select form-control-sm" aria-placeholder="2">
                         <%= details.sexe=='m' ? 'selected' :'' %>
                             <option value="M" <%=details.sexe=='M' ? 'selected' :'' %>>Masculin</option>
                             <option value="F" <%=details.sexe=='F' ? 'selected' :'' %>>Feminin</option>
@@ -67,37 +67,37 @@
                     <form action="/updateEtude/<%=user.id%>-<%= etude.id %>" method="post" class="row col-md-10 mb-4 p-1 border rounded">
                        <h1 class="h5 text-secondary">Etude</h1>
                         <div class="col-md-6 form-floating mb-4">
-                            <input type="text" class="form-control" placeholder="niveau" name="niveau"
+                            <input type="text" class="form-control form-control-sm" placeholder="niveau" name="niveau"
                                 value="<%=etude.niveau%>">
                             <label for="">Niveau</label>
                         </div>
                         <div class="col-md-6 form-floating mb-4">
-                            <input type="text" class="form-control" placeholder="nom" name="domaine"
+                            <input type="text" class="form-control form-control-sm" placeholder="nom" name="domaine"
                                 value="<%=etude.domaine%>">
                             <label for="">Domaine</label>
                         </div>
                         <div class="col-md-6 form-floating mb-4">
-                            <input type="text" class="form-control" placeholder="nom" name="etablissement"
+                            <input type="text" class="form-control form-control-sm" placeholder="nom" name="etablissement"
                                 value="<%=etude.etablissement%>">
                             <label for="">Etablissement</label>
                         </div>
                         <div class="col-md-6 form-floating mb-4">
-                            <input type="text" class="form-control" placeholder="nom" name="pays"
+                            <input type="text" class="form-control form-control-sm" placeholder="nom" name="pays"
                                 value="<%=etude.pays%>">
                             <label for="">Pays</label>
                         </div>
                         <div class="col-md-6 form-floating mb-4">
-                            <input type="text" class="form-control" placeholder="nom" name="region"
+                            <input type="text" class="form-control form-control-sm" placeholder="nom" name="region"
                                 value="<%=etude.region%>">
                             <label for="">Region</label>
                         </div>
                         <div class="col-md-6 form-floating mb-4">
-                            <input type="text" class="form-control" placeholder="nom" name="debut"
+                            <input type="text" class="form-control form-control-sm" placeholder="nom" name="debut"
                                 value="<%=etude.dateDebut%>">
                             <label for="">Anne debut</label>
                         </div>
                         <div class="col-md-6 form-floating mb-4">
-                            <input type="text" class="form-control" placeholder="nom" name="fin" value="<%=etude.dateFin%>">
+                            <input type="text" class="form-control form-control-sm" placeholder="nom" name="fin" value="<%=etude.dateFin%>">
                             <label for="">Anne fin</label>
                         </div>
                         <div class="col-md-12 d-flex justify-content-end mb-4">

@@ -50,10 +50,11 @@ class TableUser extends Table {
     }
 
     feedBack = (fname, lname, email, comment) =>{
-        return new Promise((reject)=>{
-            this.database.insertData("INSER into feedBack(firstName, lastName, email, comment) VALUE(?, ?, ?, ?)")
+        return new Promise((resolve, reject)=>{
+            this.database.insertData("INSERT into feedBack(firstName, lastName, email, comment) VALUE(?, ?, ?, ?)", 
+            [fname, lname, email, comment])
             .then(res=>resolve(res))
-            .catch(e=>reject());
+            .catch(e=>reject(e));
         })
     }
 }

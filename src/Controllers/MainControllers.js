@@ -243,6 +243,7 @@ class MainControllers extends Controllers {
             new TableUser().feedBack(fname, lname, email, comment)
             .then(res=> response.redirect('/contact'))
             .catch(e=>{
+                console.log(e)
                 response.redirect('/500')
             })    
         }

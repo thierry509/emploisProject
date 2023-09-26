@@ -30,6 +30,7 @@ class AuthControllers extends Controllers {
     }
 
     signIn = (request, response) => {
+        console.log(request.body);
         const form = request.body;
         const email = form.email,
             emailConfirm = form.emailConfirmation,
@@ -82,7 +83,17 @@ class AuthControllers extends Controllers {
                             console.log("failed")
                         }
                     }).catch((e) => {
-                        console.log('echec', e)
+                        if(e.errno == 1062){
+                            let info ={
+                                message : "Cette email existe deja sur le systeme",
+                                error : true
+                            } 
+                            response.render(
+                                this.path('sign-in.ejs'),{
+                                    response : info
+                                }
+                            )
+                        }
                     })
             })
         }
