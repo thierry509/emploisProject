@@ -1,22 +1,26 @@
 const form = document.querySelector("#register"),
-typeFields = form.querySelectorAll(".form-check-input"),
 groupName = form.querySelector('fieldset#name'),
-templateName = document.querySelector("#template-name");
-console.log(typeFields);
-typeFields.forEach(item=>{
-    item.addEventListener('change', ()=>{
+part1 = document.querySelector('#part-1'),
+part2 = document.querySelector("#part-2"),
+templateName = document.querySelector("#template-name"),
+type = document.querySelector('#type'),
+btnType = document.querySelector('#btn-type');
+    btnType.addEventListener('click', (e)=>{
+        e.preventDefault();
         groupName.innerHTML = "";
-        if(item.value == 'candidat'){
+        if(type.value == 'candidat'){
+            part1.classList.add('d-none');
+            part2.classList.remove("d-none");
             groupName.appendChild(templateBuild(templateName, "Prenom", "firstName", 2));
             groupName.appendChild(templateBuild(templateName, "nom", "lastName"), 2);
 
         }
-        else if(item.value == 'employeur'){
+        else if(type.value == 'employeur'){
+            part1.classList.add('d-none');
+            part2.classList.remove("d-none");
             groupName.appendChild(templateBuild(templateName, "nom", "name", 1));
-
         }
     })
-})
 
 const templateBuild = (template, label, name, nbre) =>{
     tmp = template.content.cloneNode(true)

@@ -1,4 +1,6 @@
 const Utils = require("../Utils/Utils");
+const sendEMail = require("../mail/SendEMail");
+const Verification = require("../mail/Verification");
 const TableEmplois = require("../model/Table/TableEmplois");
 const Controllers = require("./Controller");
 
@@ -29,31 +31,40 @@ class EmploisControllers extends Controllers {
         const id = request.params.id;
         let user = request.session.auth;
         const { titre, domaine, specialiter, debut, fin, pays, ville, zone, durre, introduction, qualification, fonction, condition } = request.body;
-        if (user != undefined) {
-            if (user.id == id) {
-                Utils.generateEmploisId()
-                    .then(emploiId => {
-                        new TableEmplois().add(emploiId, user.id, titre, domaine, specialiter, debut, fin, ville, pays, zone, durre, introduction, qualification, fonction, condition)
-                            .then(res => {
-                                response.redirect(`/employeur/${user.id}`);
-                                new Verification().emplois(emploiId)
-                                .then(data=>{
-                                    const {candidat, emplois} = data;
-                                Send .send(candidat, emplois);
+        if (
+            !(Utils.isEmpty(titre) || Utils.isEmpty(domaine) || Utils.isEmpty(specialiter) ||
+          Utils.isEmpty(pays) || Utils.isEmpty(ville) ||
+            Utils.isEmpty(zone) || Utils.isEmpty(durre) || Utils.isEmpty(introduction) ||
+            Utils.isEmpty(qualification) || Utils.isEmpty(fonction) || Utils.isEmpty(condition))
+        
+            ) {
+            if (user != undefined) {
+                if (user.id == id) {
+                    Utils.generateEmploisId()
+                        .then(emploiId => {
+                            new TableEmplois().add(emploiId, user.id, titre, domaine, specialiter, debut, fin, ville, pays, zone, durre, introduction, qualification, fonction, condition)
+                                .then(res => {
+                                    response.redirect(`/employeur/${user.id}`);
+                                    new Verification().emplois(emploiId)
+                                        .then(data => {
+                                            const { candidat, emplois } = data;
+                                            sendEMail.send(candidat, emplois);
+                                        });
+                                })
+                                .catch(e => {
+                                    console.log(e);
                                 });
-                            })
-                            .catch(e => {
-                                console.log(e);
-                            });
-                    })
+                        })
+                }
+                else {
+                    response.redirect('/')
+                }
             }
             else {
-                response.redirect('/')
+                response.redirect('/');
             }
         }
-        else {
-            response.redirect('/');
-        }
+        console.log('err')
     }
 
     applicationEmplois = (request, response) => {

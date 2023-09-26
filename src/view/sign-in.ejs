@@ -15,23 +15,20 @@
 
 <body class="text-center">
   <main class="form-signin col-8">
-    <form method="post" action="auth/sign-in" id="register">
+    <form method="post" action="/auth/sign-in" id="register">
       <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
-      <div class="row">
-        <fieldset class="mb-4">
-          <legend>Vous vouler vous inscrire en tant que?</legend>\
-          <div class="row">
-            <div class="form-check col-md-6 border py-3">
-              <label for="" class="form-check-label">Candidat</label>
-              <input class="form-check-input" type="radio" name="type" value="candidat" id="">
-            </div>
-            <div class="form-check col-md-6 border py-3">
-              <input class="form-check-input" type="radio" name="type" value="employeur" id="">
-              <label for="" class="form-check-label">Employeur</label>
-
-            </div>
+      <div class="d-flex flex-column align-items-center" id="part-1">
+          <div class="col-md-6 my-4">
+          <label>Vous vouler vous inscrire en tant que?</label>
+            <select name="type" class="form-select form-select-md mt-3" id="type">
+              <option value="candidat" selected>Candidat</option>
+              <option value="employeur">Employeur</option>
+            </select>
           </div>
-        </fieldset>
+          <button class="btn btn-primary col-md-4" id = "btn-type">Suivant</button>
+      </div>
+
+      <div class="d-none" id="part-2">
         <fieldset id="name" class="row">
           <div class="form-floating mb-4 col-md-6">
             <input type="text" class="form-control" name="firstName" id="prenom" placeholder="Joseph">
@@ -43,28 +40,29 @@
           </div>
         </fieldset>
         <fieldset id="fieldset-email" class="row">
-        <div class="form-floating mb-4 col-md-6">
-          <input type="email" class="form-control" name="email" id="email" placeholder="name@example.com">
-          <label for="floatingInput">Email</label>
-        </div>
-        <div class="form-floating mb-4 col-md-6">
-          <input type="email" class="form-control" name="emailConfirmation" id="email" placeholder="name@example.com">
-          <label for="floatingInput">Confirmation Email</label>
-        </div>
+          <div class="form-floating mb-4 col-md-6">
+            <input type="email" class="form-control" name="email" id="email" placeholder="name@example.com">
+            <label for="floatingInput">Email</label>
+          </div>
+          <div class="form-floating mb-4 col-md-6">
+            <input type="email" class="form-control" name="emailConfirmation" id="email" placeholder="name@example.com">
+            <label for="floatingInput">Confirmation Email</label>
+          </div>
         </fieldset>
         <fieldset id="fieldset-password" class="row">
-        <div class="form-floating mb-4 col-md-6">
-          <input type="password" class="form-control" name="password" id="password" placeholder="password">
-          <label for="floatingInput">Password</label>
-        </div>
-        <div class="form-floating mb-4 col-md-6">
-          <input type="password" class="form-control" name="passwordConfirmation" placeholder="Password">
-          <label for="floatingPassword">Confirmation Password</label>
-        </div>
+          <div class="form-floating mb-4 col-md-6">
+            <input type="password" class="form-control" name="password" id="password" placeholder="password">
+            <label for="floatingInput">Password</label>
+          </div>
+          <div class="form-floating mb-4 col-md-6">
+            <input type="password" class="form-control" name="passwordConfirmation" placeholder="Password">
+            <label for="floatingPassword">Confirmation Password</label>
+          </div>
         </fieldset>
+        <div class="row d-flex justify-content-center">
+          <button class="btn btn-lg btn-primary col-md-4" type="submit">Inscrire</button>
+        </div>
       </div>
-      <div class="row d-flex justify-content-center">
-        <button class="btn btn-lg btn-primary col-md-4" type="submit">Inscrire</button>
       </div>
       <div class="row mt-3">
         <a href="login" class="text-secondary">Vous avex un compte? connecter</a>

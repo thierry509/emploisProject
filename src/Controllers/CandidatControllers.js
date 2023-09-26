@@ -17,7 +17,7 @@ class CandidatControllers extends Controllers {
                         response.redirect(`/editProfile/${id}`)
                     })
                     .catch(e => {
-                        console.log(e);
+                        response.redirect('500')
                     });
             }
             else {
@@ -42,7 +42,7 @@ class CandidatControllers extends Controllers {
                         response.redirect(`/editProfile/${userId}`)
                     })
                     .catch(e => {
-                        console.log(e);
+                        response.redirect('500')
                     });
             }
             else {
@@ -67,8 +67,7 @@ class CandidatControllers extends Controllers {
                         response.redirect(`/editProfile/${userId}`)
                     })
                     .catch(e => {
-                        console.log(e);
-                    });
+                        response.redirect('500')                    });
             }
             else {
                 response.redirect('/')
@@ -141,6 +140,8 @@ class CandidatControllers extends Controllers {
                             applications: application
                         }
                         )
+                    }).catch(e=>{
+                        response.redirect('500')
                     })
             }
         }
@@ -156,8 +157,7 @@ class CandidatControllers extends Controllers {
             new TableCandidat().deleteApplication(id, user.id)
                 .then(res => response.redirect(`/applicationCandidat/${user.id}`))
                 .catch(e => {
-                    console.log(e)
-                    response.redirect("/")
+                    response.redirect('500')
                 });
         }
         else {

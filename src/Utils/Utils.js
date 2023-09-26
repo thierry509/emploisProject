@@ -23,21 +23,21 @@ class Utils {
                 .then(user => {
                     if (user.length >= 0) {
                         resolve(id);
-                    }else{
+                    } else {
                         generateUserId()
                     }
                 });
         })
     }
 
-    static generateEmploisId(){
+    static generateEmploisId() {
         return new Promise((resolve, reject) => {
             let id = Utils.generate();
             new TableEmplois().getWithId(id)
                 .then(emplois => {
                     if (emplois.length >= 0) {
                         resolve(id);
-                    }else{
+                    } else {
                         generateEmploisId()
                     }
                 });
@@ -57,17 +57,29 @@ class Utils {
     }
 
     static haveSimilaritie(chaine1, chaine2) {
-        const mots1 = chaine1.split(' ');
-        const mots2 = chaine2.split(' ');
+        if (chaine1 && chaine2) {
+            const mots1 = chaine1.split(' ');
+            const mots2 = chaine2.split(' ');
 
-        const ensembleMots1 = new Set(mots1);
+            const ensembleMots1 = new Set(mots1);
 
-        for (const mot of mots2) {
-            if (ensembleMots1.has(mot)) {
-                return true;
+            for (const mot of mots2) {
+                if (ensembleMots1.has(mot)) {
+                    return true;
+                }
             }
         }
         return false;
+
+    }
+
+    static isEmpty(string) {
+        if (string) {
+            if (string.trim() == "") {
+                return true;
+            }
+            return false;
+        }
     }
 }
 module.exports = Utils;

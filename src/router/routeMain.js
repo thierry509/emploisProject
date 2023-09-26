@@ -5,9 +5,12 @@ const EmploisControllers = require('../Controllers/EmploisControllers');
 const TableCandidat = require('../model/Table/TableCandidat');
 const route = express.Router();
 
+route.get("/500", new MainControllers().serverCrached);
 route.get('/allEmplois', new EmploisControllers().allEmplois)
 route.get('/', new MainControllers().home);
 route.get('/login', new MainControllers().login);
+route.get("/about", new MainControllers().about);
+route.get("/contact", new MainControllers().contact);
 route.get('/sign-in', new MainControllers().signIn)
 route.get('/emplois/:id', new MainControllers().emploisDetails)
 route.get('/profile/:id', new MainControllers().profile);
@@ -28,6 +31,10 @@ route.post('/updateEtude/:id', new CandidatControllers().updateEtude)
 route.post('/updateExperience/:id', new CandidatControllers().updateExperience);
 route.post('/addEmplois/:id', new EmploisControllers().addEmploi);
 route.post('/addEtude/:id', new CandidatControllers().registerEtude);
+route.post('/feedBack', new MainControllers().feedBack);
+
+
+
 route.get("/allcandidat", (req, response)=>{
     new TableCandidat().allCandidat()
     .then(candidat=>{

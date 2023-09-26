@@ -48,5 +48,13 @@ class TableUser extends Table {
             .catch(e => reject(e));
         });
     }
+
+    feedBack = (fname, lname, email, comment) =>{
+        return new Promise((reject)=>{
+            this.database.insertData("INSER into feedBack(firstName, lastName, email, comment) VALUE(?, ?, ?, ?)")
+            .then(res=>resolve(res))
+            .catch(e=>reject());
+        })
+    }
 }
 module.exports = TableUser;

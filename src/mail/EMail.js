@@ -10,18 +10,18 @@ class EMail{
           });
     }
 
-    sendMail = (recipient, subjectm, message)=>{
+    sendMail = (recipient, subject, message)=>{
         const mailOptions = {
-            from: destinataire,
-            to: destinataire, 
-            subject: sujet, 
+            from: "haitilimonade@hotmail.com",
+            to: recipient, 
+            subject: subject, 
             text: message 
           };
-          transporter.sendMail(mailOptions, (error, res) => {
+          this.transporter.sendMail(mailOptions, (error, res) => {
             if (error) {
               console.error('Erreur lors de l\'envoi de l\'e-mail :', error);
             } else {
-              console.log('E-mail envoyé avec succès :', res.response);
+              console.log('E-mail envoyé avec succès :', recipient , res.response);
             }
           });
     }

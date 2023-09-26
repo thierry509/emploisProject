@@ -86,6 +86,14 @@ CREATE TABLE application(
     CONSTRAINT fk_id_candidat_application FOREIGN KEY(id_candidat) REFERENCES candidat(id_user),
     CONSTRAINT fk_id_emploi FOREIGN KEY(id_emplois) REFERENCES emplois(id) 
 );
+
+CREATE TABLE feedBack(
+    id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    firstName VARCHAR(255) NOT NULL,
+    lastName VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    comment TEXT NOT NULL
+);
 -- Fin de la création des tables.AFTER
 
 -- Insertion dans la table User

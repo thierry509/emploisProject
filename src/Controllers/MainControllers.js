@@ -1,15 +1,23 @@
+const Utils = require("../Utils/Utils");
+const Verification = require("../mail/Verification");
 const TableCandidat = require("../model/Table/TableCandidat");
 const TableEmplois = require("../model/Table/TableEmplois");
 const TableEmployeur = require("../model/Table/TableEmployeur");
+const TableUser = require("../model/Table/UserTable");
 const Controllers = require("./Controller");
 
 class MainControllers extends Controllers {
-    notFound = (request, response) =>{
+    notFound = (request, response) => {
         response.render(
             this.path("404.ejs")
         );
     }
 
+    serverCrached = (request, response) => {
+        response.render(
+            this.path('500.ejs')
+        )
+    }
     home = (request, response) => {
         let user = request.session.auth;
         new TableEmplois().recentEmplois()
@@ -21,12 +29,20 @@ class MainControllers extends Controllers {
                 });
             })
             .catch(e => {
-                console.log(e);
+                response.redirect('500')
             });
     }
     login = (request, response) => {
         if (request.session.auth == undefined) {
-            response.render(this.path('login.ejs'));
+            const info = {
+                message: "",
+                error: false
+            }
+            response.render(
+                this.path('login.ejs'), {
+                response: info
+            }
+            );
         }
         else {
             response.redirect('/');
@@ -34,7 +50,15 @@ class MainControllers extends Controllers {
     }
 
     signIn = (request, response) => {
-        response.render(this.path('sign-in.ejs'));
+        const info = {
+            message: "",
+            error: false
+        }
+        response.render(
+            this.path('sign-in.ejs'), {
+            response: info
+        }
+        );
     }
 
     emploisDetails = (request, response) => {
@@ -43,7 +67,7 @@ class MainControllers extends Controllers {
         new TableEmplois().emploisDetails(id)
             .then(details => {
                 if (details.length == 1) {
-                    console.log(details);
+                    new Verification().emplois(details[0].id);
                     response.render(
                         this.path('emploisDetails.ejs'), {
                         details: details[0],
@@ -55,7 +79,7 @@ class MainControllers extends Controllers {
                 }
             })
             .catch(e => {
-                console.log(e);
+                response.redirect('500')
             });
     }
 
@@ -78,16 +102,16 @@ class MainControllers extends Controllers {
                                 );
                             })
                             .catch(e => {
-                                console.log(e);
+                                response.redirect('500')
                             });
                     })
                         .catch(e => {
-                            console.log(e);
+                            response.redirect('500')
                         });
                 }
             })
             .catch(e => {
-                console.log(e);
+                response.redirect('500')
             });
     }
     employeurDetails = (request, response) => {
@@ -187,7 +211,7 @@ class MainControllers extends Controllers {
                         response.redirect(`/applicationCandidat/${user.id}`);
                     })
                     .catch(e => {
-                        console.log(e);
+                        response.redirect('500')
                     });
             }
         }
@@ -196,5 +220,32 @@ class MainControllers extends Controllers {
         }
     }
 
+    about = (request, response) => {
+        const user = request.session.auth;
+        response.render(
+            this.path('about.ejs'), {
+            user: user
+        }
+        )
+    }
+    contact = (request, response) => {
+        const user = request.session.auth;
+        response.render(
+            this.path('contact.ejs'), {
+            user: user
+        }
+        )
+    }
+
+    feedBack = (request, response)=>{
+        const {fname, lname, email, comment} = request.body;
+        if(!(Utils.isEmpty(fname) || Utils.isEmpty(lname) || Utils.isEmpty(email) || Utils.isEmpty())){
+            new TableUser().feedBack(fname, lname, email, comment)
+            .then(res=> response.redirect('/contact'))
+            .catch(e=>{
+                response.redirect('/500')
+            })    
+        }
+    }
 }
 module.exports = MainControllers;

@@ -16,7 +16,10 @@
 <body class="text-center">
     <main class="form-signin col-md-4 col-11">
       <h1 class="h3 text-center fw-bold text-primary">-Emplois-</h1>
-        <form method="post" action="auth/login">
+      <%if(response.error) {%>
+      <div class="alert alert-danger"><%= response.message %></div>  
+      <% } %>
+        <form method="post" action="/auth/login">
           <h1 class="h4 my-3 fw-normal">Connection</h1>
       
           <div class="form-floating mb-4">
