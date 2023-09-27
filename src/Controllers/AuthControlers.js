@@ -1,6 +1,6 @@
 const Authentification = require("../Auth/Authentification");
 const Utils = require("../Utils/Utils");
-const TableUser = require("../model/Table/UserTable");
+const TableUser = require("../database/Table/UserTable");
 const { use } = require("../router/routeMain");
 const Controllers = require("./Controller");
 const bcrypt = require('bcrypt')

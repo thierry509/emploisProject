@@ -1,9 +1,9 @@
 const Utils = require("../Utils/Utils");
 const Verification = require("../mail/Verification");
-const TableCandidat = require("../model/Table/TableCandidat");
-const TableEmplois = require("../model/Table/TableEmplois");
-const TableEmployeur = require("../model/Table/TableEmployeur");
-const TableUser = require("../model/Table/UserTable");
+const TableCandidat = require("../database/Table/TableCandidat");
+const TableEmplois = require("../database/Table/TableEmplois");
+const TableEmployeur = require("../database/Table/TableEmployeur");
+const TableUser = require("../database/Table/UserTable");
 const Controllers = require("./Controller");
 
 class MainControllers extends Controllers {

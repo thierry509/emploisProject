@@ -1,6 +1,6 @@
 const crypto = require('crypto');
-const TableUser = require('../model/Table/UserTable');
-const TableEmplois = require('../model/Table/TableEmplois');
+const TableUser = require('../database/Table/UserTable');
+const TableEmplois = require('../database/Table/TableEmplois');
 class Utils {
     static generate = () => {
         let result = ''

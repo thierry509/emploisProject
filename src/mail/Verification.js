@@ -1,6 +1,6 @@
 const Utils = require("../Utils/Utils");
-const TableCandidat = require("../model/Table/TableCandidat");
-const TableEmplois = require("../model/Table/TableEmplois");
+const TableCandidat = require("../database/Table/TableCandidat");
+const TableEmplois = require("../database/Table/TableEmplois");
 const sendEMail = require("./SendEMail");
 
 class Verification {

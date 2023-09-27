@@ -3,7 +3,7 @@ const Table = require("./Table");
 class TableUser extends Table {
     getWithId = (id)=>{
         return new Promise((resolve, reject) => {
-            this.database.get_data("SELECT * FROM user WHERE id = ?", [id])
+            this.database.query("SELECT * FROM user WHERE id = ?", [id])
                 .then(user => resolve(user))
                 .catch(e=>reject(e));
         });
@@ -11,7 +11,7 @@ class TableUser extends Table {
 
     getUserWithEmail = (email) => {
         return new Promise((resolve, reject) => {
-            this.database.get_data("SELECT * FROM user WHERE email = ?", [email])
+            this.database.query("SELECT * FROM user WHERE email = ?", [email])
                 .then(user => resolve(user))
                 .catch(e=>reject(e));
         });

@@ -1,7 +1,7 @@
 const Utils = require("../Utils/Utils");
 const sendEMail = require("../mail/SendEMail");
 const Verification = require("../mail/Verification");
-const TableEmplois = require("../model/Table/TableEmplois");
+const TableEmplois = require("../database/Table/TableEmplois");
 const Controllers = require("./Controller");
 
 class EmploisControllers extends Controllers {

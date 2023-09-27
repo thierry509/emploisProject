@@ -2,7 +2,7 @@ const express = require('express');
 const CandidatControllers = require('../Controllers/CandidatControllers');
 const MainControllers = require('../Controllers/MainControllers');
 const EmploisControllers = require('../Controllers/EmploisControllers');
-const TableCandidat = require('../model/Table/TableCandidat');
+const TableCandidat = require('../database/Table/TableCandidat');
 const route = express.Router();
 
 route.get("/500", new MainControllers().serverCrached);

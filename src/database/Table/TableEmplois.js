@@ -4,7 +4,7 @@ const Table = require("./Table");
 class TableEmplois extends Table {
     getWithId = (id) => {
         return new Promise((resolve, response)=>{
-            this.database.get_data('SELECT * FROM emplois WHERE id = ?', [id])
+            this.database.query('SELECT * FROM emplois WHERE id = ?', [id])
             .then(user=>resolve(user))
             .catch(e=>console.log(e));
         });
@@ -12,7 +12,7 @@ class TableEmplois extends Table {
 
     allEmplois = () => {
         return new Promise((resolve, reject) => {
-            this.database.get_data(
+            this.database.query(
                 'SELECT *, CONCAT(SUBSTRING_INDEX(introduction, " ", 5), "..." )AS intro FROM emplois', []
             )
                 .then(emplois => resolve(emplois))
@@ -22,7 +22,7 @@ class TableEmplois extends Table {
     }
     recentEmplois = () => {
         return new Promise((resolve, reject) => {
-            this.database.get_data(
+            this.database.query(
                 'SELECT *, CONCAT(SUBSTRING_INDEX(introduction, " ", 5), "..." )AS intro FROM emplois LIMIT 7', []
             )
                 .then(emplois => resolve(emplois))
@@ -32,7 +32,7 @@ class TableEmplois extends Table {
 
     emploisDetails = (id) => {
         return new Promise((resolve, reject) => {
-            this.database.get_data(
+            this.database.query(
                 "SELECT * FROM emplois e JOIN employeur em ON e.id_employeur = em.id_user WHERE e.id = ?",
                 [id]
             )
@@ -54,7 +54,7 @@ class TableEmplois extends Table {
 
     getApplication = (id_emplois) => {
         return new Promise((resolve, reject) => {
-            this.database.get_data(
+            this.database.query(
                 "SELECT a.id_candidat, a.id_emplois, a.etat, e.titre FROM application a JOIN emplois e ON a.id_emplois = e.id JOIN candidat c ON a.id_candidat = c.id_user WHERE e.id = ?",
                 [id_emplois]
             )
@@ -64,7 +64,7 @@ class TableEmplois extends Table {
     }
     getApplicationWithEmployeur = (idEmployeur, idEmplois) => {
         return new Promise((resolve, reject) => {
-            this.database.get_data(
+            this.database.query(
                 'SELECT id, id_employeur FROM emplois WHERE id = ?',
                 [idEmplois]
             )
@@ -74,7 +74,7 @@ class TableEmplois extends Table {
     }
     accepteCandidat = (idCandidat, idEmplois) => {
         return new Promise((resolve, reject) => {
-            this.database.get_data(
+            this.database.query(
                 `UPDATE application SET etat = "accepter" WHERE id_candidat = ${idCandidat} AND id_emplois = ${idEmplois}`,
                 []
             )
@@ -84,7 +84,7 @@ class TableEmplois extends Table {
     }
     refuserCandidat = (idCandidat, idEmplois) => {
         return new Promise((resolve, reject) => {
-            this.database.get_data(
+            this.database.query(
                 `UPDATE application SET etat = "refuser" WHERE id_candidat = ${idCandidat} AND id_emplois = ${idEmplois}`,
                 []
             )

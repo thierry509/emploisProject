@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon public/index"
+    "start":"node public/index",
+    "start-dev": "nodemon public/index",
+    "migrate" : "node src/database/migration"
   },
   "author": "",
   "license": "ISC",

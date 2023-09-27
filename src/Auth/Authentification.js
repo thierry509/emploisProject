@@ -1,7 +1,7 @@
 const Controllers = require("../Controllers/Controller");
-const TableCandidat = require("../model/Table/TableCandidat");
-const TableEmployeur = require("../model/Table/TableEmployeur");
-const TableUser = require("../model/Table/UserTable");
+const TableCandidat = require("../database/Table/TableCandidat");
+const TableEmployeur = require("../database/Table/TableEmployeur");
+const TableUser = require("../database/Table/UserTable");
 class Authentification extends Controllers{
     authUser = (email, password) => {
         return new Promise((resolve, reject)=>{

@@ -1,4 +1,4 @@
-const TableCandidat = require("../model/Table/TableCandidat");
+const TableCandidat = require("../database/Table/TableCandidat");
 const Controllers = require("./Controller");
 
 class CandidatControllers extends Controllers {
